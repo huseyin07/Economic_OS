@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { site } from "@/lib/config";
+import { site } from "../lib/config";
 
 function Mark() { return <span className="mark"><i /><i /><i /></span> }
 export function Header() {
