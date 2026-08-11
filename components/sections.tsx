@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Check, Copy, ExternalLink, LockKeyhole, Radio, Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import { site } from "@/lib/config";
+import { site } from "../lib/config";
 import { Button, Eyebrow, Reveal, SectionTitle } from "./ui";
 
 const boot = [["Arc Network","ONLINE"],["Money","READY"],["Markets","READY"],["Software","READY"],["Culture Layer","ACTIVE"],["$EOS","LOADED"]];
