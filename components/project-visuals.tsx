@@ -4,11 +4,11 @@ import { visuals } from "../lib/visuals";
 export function HeroCoinVisual() {
   return (
     <div className="pointer-events-none relative z-[3] mx-auto h-0 w-[min(1180px,calc(100%-48px))]">
-      <div className="absolute right-0 top-[-610px] hidden w-[330px] lg:block xl:w-[390px]">
-        <div className="relative aspect-square overflow-hidden border border-[rgba(104,221,255,.22)] bg-[#061426]/70 shadow-[0_0_90px_rgba(35,140,255,.16)] backdrop-blur-sm">
+      <div className="absolute right-0 top-[-330px] hidden w-[210px] lg:block xl:w-[240px]">
+        <div className="relative aspect-square overflow-hidden border border-[rgba(104,221,255,.22)] bg-[#061426]/70 shadow-[0_0_70px_rgba(35,140,255,.13)] backdrop-blur-sm">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(104,221,255,.08),transparent_68%)]" />
           <img src={visuals.coin} alt="Economic OS coin artwork" className="h-full w-full object-cover opacity-95" />
-          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#030a17] to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030a17] to-transparent" />
         </div>
       </div>
     </div>
