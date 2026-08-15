@@ -1,17 +1,113 @@
 "use client";
-import { useState } from "react";
-import { Check, Copy, ExternalLink, LockKeyhole, Radio, Sparkles } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
-import { site } from "../lib/config";
-import { Button, Eyebrow, Reveal, SectionTitle } from "./ui";
 
-const boot = [["Arc Network","ONLINE"],["Money","READY"],["Markets","READY"],["Software","READY"],["Culture Layer","ACTIVE"],["$EOS","LOADED"]];
-export function Hero(){return <section className="hero" id="top"><Network /><div className="hero-inner"><Reveal><Eyebrow>ARC NETWORK <b>● ONLINE</b></Eyebrow><h1>Economic OS</h1><h2>The internet has an Economic OS.<br/>Now it has a <em>meme.</em></h2><p>$EOS is a community meme inspired by the defining vision of Arc — the Economic OS for the internet.</p><div className="actions"><Button href="#community">Enter the OS</Button><Button href="#token" secondary>View $EOS</Button></div></Reveal><div className="coordinates"><span>NETWORK / <b>ARC</b></span><span>LAYER / <b>CULTURE</b></span><span>STATUS / <b>ONLINE</b></span></div></div></section>}
-function Network(){const reduced=useReducedMotion(); return <div className="network" aria-hidden="true"><svg viewBox="0 0 1200 650"><g className="links"><path d="M50 470L280 290 490 390 700 160 920 285 1160 90"/><path d="M280 290L410 95M490 390L720 530M700 160L890 60M920 285L1100 500"/></g>{[[50,470],[280,290],[490,390],[700,160],[920,285],[1160,90],[410,95],[720,530],[890,60],[1100,500]].map((p,i)=><motion.circle key={i} cx={p[0]} cy={p[1]} r={i%3===0?5:3} initial={{opacity:.25}} animate={reduced?{}:{opacity:[.2,.9,.2]}} transition={{duration:3+i%4,repeat:Infinity,delay:i*.2}}/>)}</svg></div>}
-export function BootSequence(){return <section className="boot-wrap"><Reveal className="boot"><div className="boot-top"><span><i/> SYSTEM BOOT</span><span>EOS_KERN / 01</span></div><p>Initializing Economic OS...</p><div className="boot-grid">{boot.map(([a,b],i)=><motion.div key={a} initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}} transition={{delay:i*.1}}><span>{a}</span><i/><b>{b}</b></motion.div>)}</div></Reveal></section>}
-export function VisionCards(){return <><section id="vision" className="content vision"><Reveal><SectionTitle label="01 / THE PREMISE" title="What is Economic OS?" /></Reveal><div className="vision-copy"><Reveal><p>Arc was designed as the Economic Operating System for the internet — a stablecoin-native Layer 1 where money, markets, and software can operate as one programmable system.</p></Reveal><Reveal><p>Economic OS takes that defining narrative and transforms it into a community-driven cultural meme.</p><aside><LockKeyhole size={16}/><span>Arc’s official vision and the independent $EOS community token are separate. No affiliation or endorsement is implied.</span></aside></Reveal></div><Reveal><blockquote>Arc builds the infrastructure.<br/><em>$EOS carries the culture.</em></blockquote></Reveal></section><section className="content why"><SectionTitle label="02 / SIGNAL" title="Why $EOS?"/><div className="editorial">{[["01","THE NARRATIVE","Arc's vision is to become the Economic OS for the internet."],["02","THE CULTURE","Every major technological movement develops a culture around its ideas."],["03","THE MEME","$EOS turns the Economic OS narrative into a community signal."]].map(x=><Reveal className="editorial-card" key={x[0]}><span>{x[0]}</span><h3>{x[1]}</h3><p>{x[2]}</p></Reveal>)}</div></section></>}
-export function Architecture(){let outer=["Payments","FX","Settlement","Capital Markets","Applications","AI Agents"];return <section className="architecture"><div className="content"><SectionTitle label="03 / ARCHITECTURE" title="One programmable economic layer." copy="Money. Markets. Software."/><Reveal className="diagram"><div className="core"><small>CORE SYSTEM</small><strong>Economic OS</strong></div>{["Money","Markets","Software"].map((x,i)=><div className={`pillar p${i}`} key={x}>{x}</div>)}{outer.map((x,i)=><div className={`satellite s${i}`} key={x}><i/>{x}</div>)}<svg viewBox="0 0 1000 520" preserveAspectRatio="none"><path d="M500 260L245 155M500 260L500 80M500 260L755 155M245 155L100 55M245 155L80 280M500 80L370 25M500 80L630 25M755 155L900 55M755 155L920 280"/></svg></Reveal></div></section>}
-export function Lore(){let steps=["Arc introduced","Economic OS vision","Public testnet","Growing ecosystem","Economic coordination","$EOS community culture"];return <section className="content lore" id="lore"><SectionTitle label="04 / ORIGIN LOG" title="The lore" copy="From infrastructure narrative to community culture."/><div className="lore-labels"><span>OFFICIAL ARC NARRATIVE</span><span>INDEPENDENT COMMUNITY CULTURE</span></div><div className="timeline">{steps.map((x,i)=><Reveal className={`event ${i===5?"community":""}`} key={x}><b>0{i+1}</b><i/><div><small>{i===5?"CULTURE LAYER":"ARC NARRATIVE"}</small><h3>{x}</h3>{i<5&&<a href={site.sources.arc} target="_blank" rel="noreferrer">Official source <ExternalLink size={12}/></a>}</div></Reveal>)}</div></section>}
-export function Status(){let rows=[["Network","ARC"],["Operating System","Economic"],["Cultural Layer","$EOS"],["Community","ONLINE"],["Signal","ACTIVE"]];return <section className="content status-section"><Reveal className="status"><div className="status-head"><span><Radio size={16}/> SYSTEM STATUS</span><b>ALL SYSTEMS NOMINAL</b></div>{rows.map((r,i)=><div className="status-row" key={r[0]}><span>{r[0]}</span><i/>{i>2&&<em/>}<b>{r[1]}</b></div>)}<div className="status-foot">LAST CHECK / NOW <span>ARC // CULTURE_NODE_01</span></div></Reveal></section>}
-export function Token(){const [copied,setCopied]=useState(false);let rows=[["Network",site.token.network],["Ticker",site.token.ticker],["Contract",site.token.contract],["Supply",site.token.supply],["DEX",site.token.dex]];return <section className="content token" id="token"><SectionTitle label="05 / CULTURAL ASSET" title="$EOS" copy="The cultural signal of the Economic OS narrative."/><Reveal className="token-card"><div className="token-brand"><span><Sparkles/></span><div><small>ASSET IDENTITY</small><strong>$EOS</strong><p>Independent community meme</p></div></div><div className="token-data">{rows.map(r=><div key={r[0]}><span>{r[0]}</span><b className={!r[1]?"placeholder":""}>{r[1]||"PLACEHOLDER"}</b></div>)}</div><div className="token-actions"><Button disabled>Buy $EOS</Button><Button disabled secondary>View on DEX</Button><button disabled={!site.token.contract} onClick={()=>{navigator.clipboard.writeText(site.token.contract!);setCopied(true)}} className="copy">{copied?<Check/>:<Copy/>}{copied?"Copied":"Copy Contract"}</button></div><p className="pending"><i/> Token details and official destinations have not been published. Buttons activate when verified data is supplied.</p></Reveal></section>}
-export function Culture(){let ticker="BOOT THE ECONOMY / RUN $EOS / ECONOMY ONLINE / ARC IS THE SYSTEM / CULTURE LAYER ACTIVE / THE INTERNET HAS AN OS / ";return <><section className="culture"><div className="ticker"><div>{ticker.repeat(2)}</div></div><div className="content"><SectionTitle label="06 / CULTURE LAYER" title="Memes are system signals." copy="A living archive for the images, stickers and artifacts created by the community."/><div className="culture-grid">{["SIGNAL_001","ARTIFACT_002","MEME_PROTOCOL_003"].map((x,i)=><div className="artifact" key={x}><span>+</span><div className={`glyph g${i}`}/><small>{x} / AWAITING INPUT</small></div>)}</div></div></section><section className="final" id="community"><Network/><Reveal><Eyebrow>COMMUNITY / ONLINE</Eyebrow><h2>The economy is<br/>already <em>online.</em></h2><p>Join the culture around the Economic OS.</p><div className="actions"><Button disabled>Join Community</Button><Button disabled secondary>Follow on X</Button><Button href="#token" secondary>View $EOS</Button></div></Reveal></section></>}
+import { Check, Copy, ExternalLink, Globe2, Layers3, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { useState } from "react";
+import { site } from "../lib/config";
+
+const xPosts = [
+  ["Jeremy Allaire 01", "https://x.com/jerallaire/status/2001665450057285774?s=20"],
+  ["Jeremy Allaire 02", "https://x.com/jerallaire/status/2019193724186841366?s=20"],
+  ["Arc 01", "https://x.com/arc/status/2080729733600366955?s=20"],
+  ["Arc 02", "https://x.com/arc/status/2044869288050475393?s=20"],
+  ["Arc 03", "https://x.com/arc/status/2016647727032258622?s=20"],
+  ["Arc 04", "https://x.com/arc/status/2001744965723099430?s=20"],
+  ["Arc 05", "https://x.com/arc/status/2001381889983070641?s=20"],
+  ["Arc 06", "https://x.com/arc/status/1989423088476295354?s=20"],
+];
+
+export function Hero() {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    if (!site.token.contract) return;
+    await navigator.clipboard.writeText(site.token.contract);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1200);
+  };
+
+  return (
+    <section className="hero-v2" id="top">
+      <div className="hero-stars" />
+      <div className="hero-v2-inner">
+        <div className="hero-copy-v2">
+          <span className="hero-kicker">THE ECONOMIC OS FOR THE INTERNET</span>
+          <h1>Economic OS</h1>
+          <p>Arc builds the infrastructure. Economic OS carries the culture.</p>
+          <p className="hero-sub">A community meme inspired by Arc’s defining vision for a programmable internet economy.</p>
+          <div className="hero-actions-v2">
+            <a className="primary-btn" href={site.links.dex ?? "#token"} target="_blank" rel="noreferrer">View on RadarDEX <ExternalLink size={16} /></a>
+            <button className="secondary-btn" onClick={copy}>{copied ? <Check size={16} /> : <Copy size={16} />}{copied ? "Copied" : "Contract Address"}</button>
+          </div>
+          <div className="hero-meta"><span>Network: <b>ARC</b></span><i /> <span>Token: <b>Economic OS</b></span></div>
+        </div>
+
+        <div className="hero-art-v2">
+          <div className="coin-glow" />
+          <img src="/economic-os-coin.webp" alt="Economic OS artwork" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function About() {
+  return (
+    <section className="section-v2" id="about">
+      <div className="section-heading-v2"><span>ABOUT</span><h2>What is Economic OS?</h2><p>Arc describes its vision as an Economic Operating System for the internet. Economic OS turns that idea into an independent community culture layer.</p></div>
+      <div className="about-grid-v2">
+        <div className="about-panel-v2"><h3>Arc builds the system.</h3><p>A stablecoin-native Layer 1 designed for money, markets, software and internet-native economic coordination.</p></div>
+        <div className="about-panel-v2"><h3>Economic OS carries the signal.</h3><p>The meme, language and identity that forms around the idea of the internet having its own Economic OS.</p></div>
+      </div>
+      <div className="arc-vision-v2">
+        <img src="https://cdn.prod.website-files.com/685311a976e7c248b5dfde95/69a89025ecef8ed387934993_arc-video.jpg" alt="Arc Economic OS vision" />
+        <div><span>OFFICIAL ARC VISION</span><h3>The Economic OS for the internet.</h3><p>This official Arc narrative is shown for context. Economic OS remains an independent community meme and is not an Arc or Circle-issued asset.</p><a href={site.sources.arc} target="_blank" rel="noreferrer">View Arc source <ExternalLink size={14} /></a></div>
+      </div>
+      <div className="signals-v2"><span>OFFICIAL SIGNALS</span><div>{xPosts.map(([label, href]) => <a key={href} href={href} target="_blank" rel="noreferrer">{label}<ExternalLink size={11} /></a>)}</div></div>
+    </section>
+  );
+}
+
+export function Token() {
+  const [copied, setCopied] = useState(false);
+  return (
+    <section className="section-v2 token-v2" id="token">
+      <div className="section-heading-v2 centered"><span>THE ECONOMIC OS TOKEN</span><h2>Economic OS</h2><p>The cultural token of the Economic OS narrative on Arc.</p></div>
+      <div className="token-card-v2">
+        <div className="token-identity-v2"><img src="/economic-os-coin.webp" alt="Economic OS artwork" /><div><span>ECONOMIC OS</span><h3>Economic OS</h3><p>Community. Culture. Internet-native identity.</p></div></div>
+        <div className="token-stats-v2">
+          <div><span>Token Name</span><b>Economic OS</b></div>
+          <div><span>Ticker</span><b>Economic OS</b></div>
+          <div><span>Network</span><b>ARC</b></div>
+          <div><span>Contract</span><b className="contract-short">0x5c74...82cb</b></div>
+        </div>
+      </div>
+      <div className="token-links-v2">
+        <a className="primary-btn" href={site.links.dex ?? "#"} target="_blank" rel="noreferrer">Buy Economic OS <ExternalLink size={15} /></a>
+        <a className="secondary-btn" href={site.links.dex ?? "#"} target="_blank" rel="noreferrer">View on RadarDEX <ExternalLink size={15} /></a>
+        <button className="secondary-btn" onClick={async()=>{await navigator.clipboard.writeText(site.token.contract!);setCopied(true);window.setTimeout(()=>setCopied(false),1200)}}>{copied?<Check size={15}/>:<Copy size={15}/>} {copied?"Copied":"Copy Contract"}</button>
+      </div>
+    </section>
+  );
+}
+
+export function Why() {
+  const cards = [
+    [Users, "Community First", "Built by the Arc community, for the community."],
+    [Sparkles, "Cultural Power", "A narrative turned into a recognizable community signal."],
+    [Globe2, "Internet Native", "Born from Arc’s vision of an Economic OS for the internet."],
+    [ShieldCheck, "Transparent", "Contract and trading destination are visible and easy to verify."],
+  ];
+  return <section className="section-v2 why-v2"><div className="section-heading-v2 centered"><span>WHY ECONOMIC OS?</span><h2>Culture around infrastructure.</h2></div><div className="why-grid-v2">{cards.map(([Icon,title,copy]:any)=><div key={title}><Icon size={30}/><h3>{title}</h3><p>{copy}</p></div>)}</div></section>;
+}
+
+export function HowToBuy() {
+  const steps = ["Open RadarDEX", "Connect an Arc-compatible wallet", "Verify the Economic OS contract", "Swap and confirm the transaction"];
+  return <section className="section-v2 buy-v2" id="buy"><div className="section-heading-v2"><span>HOW TO BUY</span><h2>From Arc to Economic OS.</h2></div><div className="buy-grid-v2">{steps.map((step,i)=><div key={step}><b>0{i+1}</b><p>{step}</p></div>)}</div><a className="primary-btn" href={site.links.dex ?? "#"} target="_blank" rel="noreferrer">Open RadarDEX <ExternalLink size={15}/></a></section>;
+}
+
+export function Community() {
+  return <section className="community-v2" id="community"><Layers3 size={34}/><span>COMMUNITY</span><h2>Economic OS is the culture layer.</h2><p>Follow the signal, join the conversation and build the meme with the community.</p><div><a className="primary-btn" href={site.links.community ?? "#"} target="_blank" rel="noreferrer">Join Telegram</a><a className="secondary-btn" href={site.links.x ?? "#"} target="_blank" rel="noreferrer">Follow on X <ExternalLink size={15}/></a></div></section>;
+}
+
+export function FAQ() {
+  return <section className="section-v2 faq-v2" id="faq"><div className="section-heading-v2"><span>FAQ</span><h2>Know what you’re looking at.</h2></div><div className="faq-grid-v2"><div><h3>Is Economic OS an official Arc token?</h3><p>No. It is an independent community meme inspired by Arc’s Economic OS narrative.</p></div><div><h3>Where can I trade it?</h3><p>The site links directly to the configured RadarDEX market for the contract shown above.</p></div><div><h3>What network is it on?</h3><p>Arc.</p></div><div><h3>Where is the community?</h3><p>Telegram and X links are available throughout the site.</p></div></div></section>;
+}
