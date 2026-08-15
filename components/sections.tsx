@@ -49,7 +49,22 @@ export function Hero() {
 
         <div className="hero-art-v2">
           <div className="coin-glow" />
-          <div className="hero-coin-image" role="img" aria-label="Economic OS artwork" />
+          <div
+            role="img"
+            aria-label="Economic OS artwork"
+            style={{
+              position: "relative",
+              zIndex: 5,
+              width: "min(520px, 92%)",
+              aspectRatio: "1 / 1",
+              borderRadius: "50%",
+              backgroundImage: `url(${coinArt})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              boxShadow: "0 0 0 1px rgba(130,199,255,.35), 0 0 80px rgba(34,132,255,.26), 0 36px 90px rgba(0,0,0,.55)",
+            }}
+          />
         </div>
       </div>
     </section>
