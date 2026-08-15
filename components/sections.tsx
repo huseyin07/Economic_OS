@@ -4,7 +4,7 @@ import { Check, Copy, ExternalLink, Globe2, Layers3, ShieldCheck, Sparkles, User
 import { useState } from "react";
 import { site } from "../lib/config";
 
-const coinArt = "/economic-os-coin.webp?v=20260815-arc2";
+const coinArt = "/economic-os-coin.webp?v=20260815-final";
 
 const xPosts = [
   ["Jeremy Allaire 01", "https://x.com/jerallaire/status/2001665450057285774?s=20"],
@@ -16,6 +16,11 @@ const xPosts = [
   ["Arc 05", "https://x.com/arc/status/2001381889983070641?s=20"],
   ["Arc 06", "https://x.com/arc/status/1989423088476295354?s=20"],
 ];
+
+function shortContract(contract: string | null) {
+  if (!contract) return "Not configured";
+  return `${contract.slice(0, 6)}...${contract.slice(-4)}`;
+}
 
 export function Hero() {
   const [copied, setCopied] = useState(false);
@@ -44,7 +49,7 @@ export function Hero() {
 
         <div className="hero-art-v2">
           <div className="coin-glow" />
-          <img src={coinArt} alt="Economic OS artwork" />
+          <div className="hero-coin-image" role="img" aria-label="Economic OS artwork" />
         </div>
       </div>
     </section>
@@ -79,7 +84,7 @@ export function Token() {
           <div><span>Token Name</span><b>Economic OS</b></div>
           <div><span>Ticker</span><b>Economic OS</b></div>
           <div><span>Network</span><b>ARC</b></div>
-          <div><span>Contract</span><b className="contract-short">0x5c74...82cb</b></div>
+          <div><span>Contract</span><b className="contract-short">{shortContract(site.token.contract)}</b></div>
         </div>
       </div>
       <div className="token-links-v2">
