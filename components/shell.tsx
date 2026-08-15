@@ -1,12 +1,49 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ExternalLink, Menu, X } from "lucide-react";
 import { site } from "../lib/config";
 
-function Mark() { return <span className="mark"><i /><i /><i /></span> }
 export function Header() {
-  const [scrolled, setScrolled] = useState(false), [open, setOpen] = useState(false);
-  useEffect(() => { const f=()=>setScrolled(scrollY>24); addEventListener("scroll",f,{passive:true}); f(); return()=>removeEventListener("scroll",f)},[]);
-  return <header className={`${scrolled ? "scrolled" : ""} ${open ? "open" : ""}`}><a href="#top" className="brand"><Mark />Economic OS</a><nav aria-label="Main navigation">{site.nav.map(n=><a key={n.href} href={n.href} onClick={()=>setOpen(false)}>{n.label}</a>)}</nav><a href={site.links.dex ?? "#token"} target="_blank" rel="noreferrer" className="header-cta">Buy $EOS <span>↗</span></a><button className="menu" onClick={()=>setOpen(!open)} aria-label="Toggle navigation">{open?<X/>:<Menu/>}</button></header>
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header className={`${scrolled ? "scrolled" : ""} ${open ? "open" : ""}`}>
+      <a href="#top" className="brand">
+        <img src="/economic-os-coin.webp" alt="" />
+        <span>Economic OS</span>
+      </a>
+      <nav aria-label="Main navigation">
+        {site.nav.map((item) => <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>)}
+      </nav>
+      <div className="header-actions">
+        <a className="header-link" href={site.links.dex ?? "#token"} target="_blank" rel="noreferrer">View on RadarDEX <ExternalLink size={13} /></a>
+        <a className="header-buy" href={site.links.x ?? "#community"} target="_blank" rel="noreferrer">Join on X</a>
+      </div>
+      <button className="menu" onClick={() => setOpen(!open)} aria-label="Toggle navigation">{open ? <X /> : <Menu />}</button>
+    </header>
+  );
 }
-export function Footer() { return <footer><div><a className="brand" href="#top"><Mark />Economic OS</a><strong>$EOS</strong></div><nav>{site.nav.map(n=><a key={n.href} href={n.href}>{n.label}</a>)}<a href={site.links.dex ?? "#"} target="_blank" rel="noreferrer">Buy $EOS</a><a href={site.links.community ?? "#"} target="_blank" rel="noreferrer">Telegram</a><a href={site.links.x ?? "#"} target="_blank" rel="noreferrer">X</a></nav><p>“$EOS is an independent community meme token inspired by the Economic OS narrative. It is not affiliated with, issued by, sponsored by, or endorsed by Circle or Arc.”</p><small>INDEPENDENT CULTURE LAYER / 2026</small></footer> }
+
+export function Footer() {
+  return (
+    <footer>
+      <div className="footer-main">
+        <a className="brand" href="#top"><img src="/economic-os-coin.webp" alt="" /><span>Economic OS</span></a>
+        <nav>
+          <a href={site.links.dex ?? "#"} target="_blank" rel="noreferrer">RadarDEX</a>
+          <a href={site.links.community ?? "#"} target="_blank" rel="noreferrer">Telegram</a>
+          <a href={site.links.x ?? "#"} target="_blank" rel="noreferrer">X</a>
+        </nav>
+      </div>
+      <p>Economic OS is an independent community meme inspired by Arc’s “Economic OS for the internet” narrative. It is not affiliated with, issued by, sponsored by, or endorsed by Circle or Arc.</p>
+      <small>ECONOMIC OS / INDEPENDENT COMMUNITY CULTURE</small>
+    </footer>
+  );
+}
