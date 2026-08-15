@@ -4,6 +4,8 @@ import { Check, Copy, ExternalLink, Globe2, Layers3, ShieldCheck, Sparkles, User
 import { useState } from "react";
 import { site } from "../lib/config";
 
+const coinArt = "/economic-os-coin.webp?v=20260815-arc2";
+
 const xPosts = [
   ["Jeremy Allaire 01", "https://x.com/jerallaire/status/2001665450057285774?s=20"],
   ["Jeremy Allaire 02", "https://x.com/jerallaire/status/2019193724186841366?s=20"],
@@ -42,7 +44,7 @@ export function Hero() {
 
         <div className="hero-art-v2">
           <div className="coin-glow" />
-          <img src="/economic-os-coin.webp" alt="Economic OS artwork" />
+          <img src={coinArt} alt="Economic OS artwork" />
         </div>
       </div>
     </section>
@@ -72,7 +74,7 @@ export function Token() {
     <section className="section-v2 token-v2" id="token">
       <div className="section-heading-v2 centered"><span>THE ECONOMIC OS TOKEN</span><h2>Economic OS</h2><p>The cultural token of the Economic OS narrative on Arc.</p></div>
       <div className="token-card-v2">
-        <div className="token-identity-v2"><img src="/economic-os-coin.webp" alt="Economic OS artwork" /><div><span>ECONOMIC OS</span><h3>Economic OS</h3><p>Community. Culture. Internet-native identity.</p></div></div>
+        <div className="token-identity-v2"><img src={coinArt} alt="Economic OS artwork" /><div><span>ECONOMIC OS</span><h3>Economic OS</h3><p>Community. Culture. Internet-native identity.</p></div></div>
         <div className="token-stats-v2">
           <div><span>Token Name</span><b>Economic OS</b></div>
           <div><span>Ticker</span><b>Economic OS</b></div>
