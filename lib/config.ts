@@ -1,8 +1,15 @@
 export const site = {
-  nav: [{ label: "Vision", href: "#vision" }, { label: "Lore", href: "#lore" }, { label: "$EOS", href: "#token" }, { label: "Community", href: "#community" }],
+  nav: [
+    { label: "Home", href: "#top" },
+    { label: "About", href: "#about" },
+    { label: "Token", href: "#token" },
+    { label: "How to Buy", href: "#buy" },
+    { label: "Community", href: "#community" },
+    { label: "FAQ", href: "#faq" },
+  ],
   token: {
     network: "Arc",
-    ticker: "$EOS",
+    ticker: "Economic OS",
     contract: "0x5c7404118e3f028d202f9fb78da2681bd68482cb",
     supply: null,
     dex: "https://radardex.pro/#0x5c7404118e3f028d202f9fb78da2681bd68482cb",
