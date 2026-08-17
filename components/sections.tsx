@@ -36,7 +36,7 @@ function useSynchronizedTypewriter(texts: string[]) {
   useEffect(() => {
     const atFull = step >= steps && !deleting;
     const atEmpty = step <= 0 && deleting;
-    const delay = atFull ? 3400 : atEmpty ? 1200 : deleting ? 85 : 110;
+    const delay = atFull ? 3300 : atEmpty ? 1100 : deleting ? 80 : 103;
 
     const timer = window.setTimeout(() => {
       if (atFull) {
@@ -146,12 +146,7 @@ export function About() {
             return (
               <article className="signal-card-v2" key={href}>
                 <div className="signal-label-v2"><b>{label}</b><a href={href} target="_blank" rel="noreferrer">Open on X <ExternalLink size={11} /></a></div>
-                <iframe
-                  src={`https://platform.twitter.com/embed/Tweet.html?id=${id}&theme=dark&dnt=true`}
-                  title={`${label} post on X`}
-                  loading="lazy"
-                  scrolling="no"
-                />
+                <iframe src={`https://platform.twitter.com/embed/Tweet.html?id=${id}&theme=dark&dnt=true`} title={`${label} post on X`} loading="lazy" scrolling="no" />
               </article>
             );
           })}
@@ -159,18 +154,11 @@ export function About() {
       </div>
 
       <style jsx>{`
-        .arc-video-v2{position:relative;min-height:310px;background:#020914;overflow:hidden}
-        .arc-video-v2 iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+        .arc-video-v2{position:relative;min-height:310px;background:#020914;overflow:hidden}.arc-video-v2 iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
         .signals-preview-v2{margin-top:24px;padding:20px;border:1px solid rgba(83,163,244,.22);border-radius:16px;background:linear-gradient(180deg,rgba(5,19,37,.86),rgba(3,13,26,.9));box-shadow:0 18px 50px rgba(0,0,0,.18);overflow:hidden}
-        .signals-head-v2{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:16px}
-        .signals-head-v2>span{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border:1px solid rgba(91,181,255,.3);border-radius:999px;color:#55b4ff;font:9px monospace;letter-spacing:.1em}
-        .signals-head-v2 p{margin:0;color:#7f95aa;font-size:11px}
-        .signals-track-v2{display:flex;gap:14px;overflow-x:auto;padding:2px 2px 10px;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:rgba(69,153,235,.32) transparent}
-        .signal-card-v2{flex:0 0 310px;height:265px;border:1px solid rgba(79,159,238,.2);border-radius:13px;background:#061426;overflow:hidden;scroll-snap-align:start;box-shadow:0 12px 32px rgba(0,0,0,.2);transition:transform .22s ease,border-color .22s ease}
-        .signal-card-v2:hover{transform:translateY(-3px);border-color:rgba(94,184,255,.4)}
-        .signal-label-v2{height:42px;padding:0 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(75,154,230,.14);background:rgba(7,24,44,.96)}
-        .signal-label-v2 b{font-size:11px;color:#d8ebfb}.signal-label-v2 a{display:inline-flex;align-items:center;gap:5px;color:#6bb9f6;font-size:9px}
-        .signal-card-v2 iframe{display:block;width:100%;height:223px;border:0;background:#000}
+        .signals-head-v2{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:16px}.signals-head-v2>span{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border:1px solid rgba(91,181,255,.3);border-radius:999px;color:#55b4ff;font:9px monospace;letter-spacing:.1em}.signals-head-v2 p{margin:0;color:#7f95aa;font-size:11px}
+        .signals-track-v2{display:flex;gap:14px;overflow-x:auto;padding:2px 2px 10px;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:rgba(69,153,235,.32) transparent}.signal-card-v2{flex:0 0 310px;height:265px;border:1px solid rgba(79,159,238,.2);border-radius:13px;background:#061426;overflow:hidden;scroll-snap-align:start;box-shadow:0 12px 32px rgba(0,0,0,.2);transition:transform .22s ease,border-color .22s ease}.signal-card-v2:hover{transform:translateY(-3px);border-color:rgba(94,184,255,.4)}
+        .signal-label-v2{height:42px;padding:0 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(75,154,230,.14);background:rgba(7,24,44,.96)}.signal-label-v2 b{font-size:11px;color:#d8ebfb}.signal-label-v2 a{display:inline-flex;align-items:center;gap:5px;color:#6bb9f6;font-size:9px}.signal-card-v2 iframe{display:block;width:100%;height:223px;border:0;background:#000}
         @media(max-width:760px){.arc-video-v2{aspect-ratio:16/9;min-height:0}.signals-head-v2{align-items:flex-start;flex-direction:column;gap:8px}.signal-card-v2{flex-basis:285px;height:255px}.signal-card-v2 iframe{height:213px}}
       `}</style>
     </section>
@@ -184,15 +172,9 @@ export function Token() {
       <div className="section-heading-v2 centered"><span>THE ECONOMIC OS TOKEN</span><h2>Economic OS</h2><p>The cultural token of the Economic OS narrative on Arc.</p></div>
       <div className="token-card-v2">
         <div className="token-identity-v2"><img src={coinArt} alt="Economic OS artwork" /><div><span>ECONOMIC OS</span><h3>Economic OS</h3><p>Community. Culture. Internet-native identity.</p></div></div>
-        <div className="token-stats-v2">
-          <div><span>Token Name</span><b>Economic OS</b></div><div><span>Ticker</span><b>Economic OS</b></div><div><span>Network</span><b>ARC</b></div><div><span>Contract</span><b className="contract-short">{shortContract(site.token.contract)}</b></div>
-        </div>
+        <div className="token-stats-v2"><div><span>Token Name</span><b>Economic OS</b></div><div><span>Ticker</span><b>Economic OS</b></div><div><span>Network</span><b>ARC</b></div><div><span>Contract</span><b className="contract-short">{shortContract(site.token.contract)}</b></div></div>
       </div>
-      <div className="token-links-v2">
-        <a className="primary-btn" href={site.links.dex ?? "#"} target="_blank" rel="noreferrer">Buy Economic OS <ExternalLink size={15} /></a>
-        <a className="secondary-btn" href={site.links.dex ?? "#"} target="_blank" rel="noreferrer">View on RadarDEX <ExternalLink size={15} /></a>
-        <button className="secondary-btn" onClick={async()=>{await navigator.clipboard.writeText(site.token.contract!);setCopied(true);window.setTimeout(()=>setCopied(false),1200)}}>{copied?<Check size={15}/>:<Copy size={15}/>} {copied?"Copied":"Copy Contract"}</button>
-      </div>
+      <div className="token-links-v2"><a className="primary-btn" href={site.links.dex ?? "#"} target="_blank" rel="noreferrer">Buy Economic OS <ExternalLink size={15} /></a><a className="secondary-btn" href={site.links.dex ?? "#"} target="_blank" rel="noreferrer">View on RadarDEX <ExternalLink size={15} /></a><button className="secondary-btn" onClick={async()=>{await navigator.clipboard.writeText(site.token.contract!);setCopied(true);window.setTimeout(()=>setCopied(false),1200)}}>{copied?<Check size={15}/>:<Copy size={15}/>} {copied?"Copied":"Copy Contract"}</button></div>
     </section>
   );
 }
