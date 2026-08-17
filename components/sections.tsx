@@ -9,15 +9,19 @@ const arcVideoPage = "https://www.arc.io/?wvideo=fz4nbb1lui";
 const arcVideoEmbed = "https://fast.wistia.net/embed/iframe/fz4nbb1lui";
 
 const xPosts = [
-  ["Jeremy Allaire 01", "https://x.com/jerallaire/status/2001665450057285774?s=20"],
-  ["Jeremy Allaire 02", "https://x.com/jerallaire/status/2019193724186841366?s=20"],
-  ["Arc 01", "https://x.com/arc/status/2080729733600366955?s=20"],
-  ["Arc 02", "https://x.com/arc/status/2044869288050475393?s=20"],
-  ["Arc 03", "https://x.com/arc/status/2016647727032258622?s=20"],
-  ["Arc 04", "https://x.com/arc/status/2001744965723099430?s=20"],
-  ["Arc 05", "https://x.com/arc/status/2001381889983070641?s=20"],
-  ["Arc 06", "https://x.com/arc/status/1989423088476295354?s=20"],
+  ["Jeremy Allaire", "https://x.com/jerallaire/status/2001665450057285774?s=20"],
+  ["Jeremy Allaire", "https://x.com/jerallaire/status/2019193724186841366?s=20"],
+  ["Arc", "https://x.com/arc/status/2080729733600366955?s=20"],
+  ["Arc", "https://x.com/arc/status/2044869288050475393?s=20"],
+  ["Arc", "https://x.com/arc/status/2016647727032258622?s=20"],
+  ["Arc", "https://x.com/arc/status/2001744965723099430?s=20"],
+  ["Arc", "https://x.com/arc/status/2001381889983070641?s=20"],
+  ["Arc", "https://x.com/arc/status/1989423088476295354?s=20"],
 ];
+
+function tweetId(href: string) {
+  return href.match(/status\/(\d+)/)?.[1] ?? "";
+}
 
 function shortContract(contract: string | null) {
   if (!contract) return "Not configured";
@@ -129,11 +133,41 @@ export function About() {
         </div>
         <div><span>OFFICIAL ARC VISION</span><h3>The Economic OS for the internet.</h3><p>This official Arc narrative is shown for context. Economic OS remains an independent community meme and is not an Arc or Circle-issued asset.</p><a href={arcVideoPage} target="_blank" rel="noreferrer">View original Arc video <ExternalLink size={14} /></a></div>
       </div>
-      <div className="signals-v2"><span>OFFICIAL SIGNALS</span><div>{xPosts.map(([label, href]) => <a key={href} href={href} target="_blank" rel="noreferrer">{label}<ExternalLink size={11} /></a>)}</div></div>
+
+      <div className="signals-preview-v2">
+        <div className="signals-head-v2"><span>OFFICIAL SIGNALS</span><p>Direct posts from Arc and Jeremy Allaire.</p></div>
+        <div className="signals-track-v2">
+          {xPosts.map(([label, href]) => {
+            const id = tweetId(href);
+            return (
+              <article className="signal-card-v2" key={href}>
+                <div className="signal-label-v2"><b>{label}</b><a href={href} target="_blank" rel="noreferrer">Open on X <ExternalLink size={11} /></a></div>
+                <iframe
+                  src={`https://platform.twitter.com/embed/Tweet.html?id=${id}&theme=dark&dnt=true`}
+                  title={`${label} post on X`}
+                  loading="lazy"
+                  scrolling="no"
+                />
+              </article>
+            );
+          })}
+        </div>
+      </div>
+
       <style jsx>{`
         .arc-video-v2{position:relative;min-height:310px;background:#020914;overflow:hidden}
         .arc-video-v2 iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-        @media(max-width:760px){.arc-video-v2{aspect-ratio:16/9;min-height:0}}
+        .signals-preview-v2{margin-top:24px;padding:20px;border:1px solid rgba(83,163,244,.22);border-radius:16px;background:linear-gradient(180deg,rgba(5,19,37,.86),rgba(3,13,26,.9));box-shadow:0 18px 50px rgba(0,0,0,.18);overflow:hidden}
+        .signals-head-v2{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:16px}
+        .signals-head-v2>span{display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border:1px solid rgba(91,181,255,.3);border-radius:999px;color:#55b4ff;font:9px monospace;letter-spacing:.1em}
+        .signals-head-v2 p{margin:0;color:#7f95aa;font-size:11px}
+        .signals-track-v2{display:flex;gap:14px;overflow-x:auto;padding:2px 2px 10px;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:rgba(69,153,235,.32) transparent}
+        .signal-card-v2{flex:0 0 310px;height:265px;border:1px solid rgba(79,159,238,.2);border-radius:13px;background:#061426;overflow:hidden;scroll-snap-align:start;box-shadow:0 12px 32px rgba(0,0,0,.2);transition:transform .22s ease,border-color .22s ease}
+        .signal-card-v2:hover{transform:translateY(-3px);border-color:rgba(94,184,255,.4)}
+        .signal-label-v2{height:42px;padding:0 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(75,154,230,.14);background:rgba(7,24,44,.96)}
+        .signal-label-v2 b{font-size:11px;color:#d8ebfb}.signal-label-v2 a{display:inline-flex;align-items:center;gap:5px;color:#6bb9f6;font-size:9px}
+        .signal-card-v2 iframe{display:block;width:100%;height:223px;border:0;background:#000}
+        @media(max-width:760px){.arc-video-v2{aspect-ratio:16/9;min-height:0}.signals-head-v2{align-items:flex-start;flex-direction:column;gap:8px}.signal-card-v2{flex-basis:285px;height:255px}.signal-card-v2 iframe{height:213px}}
       `}</style>
     </section>
   );
