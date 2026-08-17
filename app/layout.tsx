@@ -5,6 +5,7 @@ import "./section-polish.css";
 import "./economy-motion.css";
 import "./hero-network.css";
 import "./system-experience.css";
+import "./final-polish.css";
 
 export const metadata: Metadata = {
   title: "Economic OS ($EOS) | The Culture Layer",
