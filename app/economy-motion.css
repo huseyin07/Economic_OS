@@ -1,0 +1,19 @@
+/* Motion polish for the interactive Economic OS builder. */
+.economy-stage{background:radial-gradient(circle at 50% 50%,rgba(35,137,255,.24),transparent 23%),radial-gradient(circle at 18% 28%,rgba(18,87,180,.13),transparent 22%),radial-gradient(circle at 82% 72%,rgba(21,112,218,.12),transparent 24%),#020d1b!important}
+.economy-stage:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(69,171,255,.14),transparent 18%),linear-gradient(110deg,transparent 18%,rgba(74,167,255,.035) 48%,transparent 72%);animation:economyStageBreath 5.5s ease-in-out infinite}
+.economy-core{filter:drop-shadow(0 0 20px rgba(47,145,255,.22))}
+.core-face{animation:coreBreathe 4s ease-in-out infinite}
+.stream-one span{animation-name:streamForward!important}
+.stream-two span{animation-name:streamReverse!important}
+.stream-three span{animation-name:streamForwardAlt!important}
+.stream-one{transform:rotate(-7deg)!important}.stream-two{transform:rotate(6deg)!important}.stream-three{transform:rotate(-4deg)!important}
+.stream span{transition:filter .2s ease,transform .2s ease}.stream span:nth-child(2n){animation-duration:8.2s!important}.stream span:nth-child(3n){animation-duration:9.4s!important}.stream-two span:nth-child(2n){animation-duration:7.6s!important}.stream-three span:nth-child(2n){animation-duration:11s!important}
+.stream-one span i:after,.stream-three span i:after{content:"›"!important}.stream-two span i{left:-13px!important;right:auto!important}.stream-two span i:after{content:"‹"!important;left:-3px!important;right:auto!important}
+.connected-node{backdrop-filter:blur(6px)}
+@keyframes streamForward{0%{left:-170px;opacity:0;transform:translateY(3px) scale(.94)}7%{opacity:1}44%{filter:brightness(1)}50%{filter:brightness(1.8);box-shadow:0 0 30px rgba(52,157,255,.5);transform:translateY(-2px) scale(1.04)}56%{filter:brightness(1.1)}93%{opacity:1}100%{left:calc(100% + 40px);opacity:0;transform:translateY(2px) scale(.96)}}
+@keyframes streamReverse{0%{left:calc(100% + 40px);opacity:0;transform:translateY(-2px) scale(.95)}8%{opacity:1}44%{filter:brightness(1)}50%{filter:brightness(1.85);box-shadow:0 0 30px rgba(52,157,255,.52);transform:translateY(2px) scale(1.05)}56%{filter:brightness(1.1)}92%{opacity:1}100%{left:-170px;opacity:0;transform:translateY(-1px) scale(.95)}}
+@keyframes streamForwardAlt{0%{left:-180px;opacity:0;transform:translateY(-4px) scale(.93)}9%{opacity:1}46%{filter:brightness(1)}52%{filter:brightness(1.7);box-shadow:0 0 26px rgba(44,148,255,.44);transform:translateY(4px) scale(1.03)}92%{opacity:1}100%{left:calc(100% + 50px);opacity:0;transform:translateY(-2px) scale(.95)}}
+@keyframes coreBreathe{0%,100%{box-shadow:0 0 75px rgba(25,123,255,.38),inset 0 1px rgba(255,255,255,.08)}50%{box-shadow:0 0 105px rgba(41,151,255,.56),0 0 36px rgba(53,173,255,.18),inset 0 1px rgba(255,255,255,.1)}}
+@keyframes economyStageBreath{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.035)}}
+.is-paused .stream span,.is-paused .core-face,.is-paused .economy-stage:after{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){.stream span,.core-face,.economy-stage:after{animation:none!important}}
