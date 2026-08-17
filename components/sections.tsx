@@ -28,38 +28,42 @@ function shortContract(contract: string | null) {
   return `${contract.slice(0, 6)}...${contract.slice(-4)}`;
 }
 
-function useTypewriter(text: string, speed = 55, pause = 1500) {
-  const [value, setValue] = useState("");
+function useSynchronizedTypewriter(texts: string[]) {
+  const steps = 90;
+  const [step, setStep] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const doneTyping = value === text && !deleting;
-    const doneDeleting = value === "" && deleting;
-    const delay = doneTyping ? pause : doneDeleting ? 700 : deleting ? Math.max(45, speed * 0.72) : speed;
+    const atFull = step >= steps && !deleting;
+    const atEmpty = step <= 0 && deleting;
+    const delay = atFull ? 3400 : atEmpty ? 1200 : deleting ? 85 : 110;
 
     const timer = window.setTimeout(() => {
-      if (doneTyping) {
+      if (atFull) {
         setDeleting(true);
         return;
       }
-      if (doneDeleting) {
+      if (atEmpty) {
         setDeleting(false);
         return;
       }
-      setValue(deleting ? text.slice(0, Math.max(0, value.length - 1)) : text.slice(0, value.length + 1));
+      setStep((current) => deleting ? Math.max(0, current - 1) : Math.min(steps, current + 1));
     }, delay);
 
     return () => window.clearTimeout(timer);
-  }, [value, deleting, text, speed, pause]);
+  }, [step, deleting]);
 
-  return value;
+  const progress = step / steps;
+  return texts.map((text) => text.slice(0, Math.round(text.length * progress)));
 }
 
 export function Hero() {
   const [copied, setCopied] = useState(false);
-  const typedTitle = useTypewriter("Economic OS", 150, 2800);
-  const typedLine = useTypewriter("Arc builds the infrastructure. Economic OS carries the culture.", 65, 2400);
-  const typedSub = useTypewriter("A community meme inspired by Arc’s defining vision for a programmable internet economy.", 48, 2200);
+  const [typedTitle, typedLine, typedSub] = useSynchronizedTypewriter([
+    "Economic OS",
+    "Arc builds the infrastructure. Economic OS carries the culture.",
+    "A community meme inspired by Arc’s defining vision for a programmable internet economy.",
+  ]);
 
   const copy = async () => {
     if (!site.token.contract) return;
