@@ -29,7 +29,7 @@ function useTypewriter(text: string, speed = 55, pause = 1500) {
   useEffect(() => {
     const doneTyping = value === text && !deleting;
     const doneDeleting = value === "" && deleting;
-    const delay = doneTyping ? pause : doneDeleting ? 350 : deleting ? Math.max(24, speed / 2) : speed;
+    const delay = doneTyping ? pause : doneDeleting ? 700 : deleting ? Math.max(45, speed * 0.72) : speed;
 
     const timer = window.setTimeout(() => {
       if (doneTyping) {
@@ -51,9 +51,9 @@ function useTypewriter(text: string, speed = 55, pause = 1500) {
 
 export function Hero() {
   const [copied, setCopied] = useState(false);
-  const typedTitle = useTypewriter("Economic OS", 90, 1800);
-  const typedLine = useTypewriter("Arc builds the infrastructure. Economic OS carries the culture.", 32, 1500);
-  const typedSub = useTypewriter("A community meme inspired by Arc’s defining vision for a programmable internet economy.", 24, 1350);
+  const typedTitle = useTypewriter("Economic OS", 150, 2800);
+  const typedLine = useTypewriter("Arc builds the infrastructure. Economic OS carries the culture.", 65, 2400);
+  const typedSub = useTypewriter("A community meme inspired by Arc’s defining vision for a programmable internet economy.", 48, 2200);
 
   const copy = async () => {
     if (!site.token.contract) return;
