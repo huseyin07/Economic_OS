@@ -24,7 +24,7 @@ export function Header() {
       </nav>
       <div className="header-actions">
         <a className="header-link" href={site.links.dex ?? "#token"} target="_blank" rel="noreferrer">View on RadarDEX <ExternalLink size={13} /></a>
-        <a className="header-link" href={site.links.community ?? "#"} target="_blank" rel="noreferrer">Telegram</a>
+        <a className="header-buy" href={site.links.community ?? "#"} target="_blank" rel="noreferrer">Telegram</a>
         <a className="header-buy" href={site.links.x ?? "#"} target="_blank" rel="noreferrer">Join on X</a>
       </div>
       <button className="menu" onClick={() => setOpen(!open)} aria-label="Toggle navigation">{open ? <X /> : <Menu />}</button>
