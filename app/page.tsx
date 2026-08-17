@@ -1,4 +1,5 @@
-import { About, FAQ, Hero } from "../components/sections";
+import { About, FAQ } from "../components/sections";
+import { Hero } from "../components/hero-fast";
 import { EconomicPulse } from "../components/economic-pulse";
 import { Footer, Header } from "../components/shell";
 import { SystemProgress } from "../components/system-progress";
