@@ -2,6 +2,7 @@ export const site = {
   nav: [
     { label: "Home", href: "#top" },
     { label: "About", href: "#about" },
+    { label: "Build", href: "#build" },
     { label: "FAQ", href: "#faq" },
   ],
   token: {
