@@ -5,5 +5,5 @@ import { SystemProgress } from "../components/system-progress";
 import { SystemExperience } from "../components/system-experience";
 
 export default function Home() {
-  return <><Header /><SystemProgress /><SystemExperience /><main><Hero /><About /><EconomicPulse /><FAQ /></main><Footer /></>;
+  return <><Header /><SystemProgress /><SystemExperience /><main><Hero /><About /><div id="build"><EconomicPulse /></div><FAQ /></main><Footer /></>;
 }
