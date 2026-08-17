@@ -36,7 +36,7 @@ function useSynchronizedTypewriter(texts: string[]) {
   useEffect(() => {
     const atFull = step >= steps && !deleting;
     const atEmpty = step <= 0 && deleting;
-    const delay = atFull ? 3300 : atEmpty ? 1100 : deleting ? 80 : 103;
+    const delay = atFull ? 3000 : atEmpty ? 1000 : deleting ? 70 : 90;
 
     const timer = window.setTimeout(() => {
       if (atFull) {
