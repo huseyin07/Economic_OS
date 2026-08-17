@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./living-background.css";
 
 export const metadata: Metadata = {
   title: "Economic OS ($EOS) | The Culture Layer",
