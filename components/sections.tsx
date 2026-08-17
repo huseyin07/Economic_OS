@@ -171,7 +171,7 @@ export function Why() {
     [Globe2, "Internet Native", "Born from Arc’s vision of an Economic OS for the internet."],
     [ShieldCheck, "Transparent", "Contract and trading destination are visible and easy to verify."],
   ];
-  return <section className="section-v2 why-v2"><div className="section-heading-v2 centered"><span>WHY ECONOMIC OS?</span><h2>Culture around infrastructure.</h2></div><div className="why-grid-v2">{cards.map(([Icon,title,copy]:any)=><div key={title}><Icon size={30}/><h3>{title}</h3><p>{copy}</p></div>)}</section>;
+  return <section className="section-v2 why-v2"><div className="section-heading-v2 centered"><span>WHY ECONOMIC OS?</span><h2>Culture around infrastructure.</h2></div><div className="why-grid-v2">{cards.map(([Icon,title,copy]:any)=><div key={title}><Icon size={30}/><h3>{title}</h3><p>{copy}</p></div>)}</div></section>;
 }
 
 export function HowToBuy() {
