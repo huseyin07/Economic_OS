@@ -47,41 +47,41 @@ export function Hero() {
           <div className="hero-meta"><span>Network: <b>ARC</b></span><i /> <span>Token: <b>Economic OS</b></span></div>
         </div>
 
-        <div className="hero-art-v2 hero-core-scene">
+        <div className="hero-art-v2 hero-planet-scene">
           <div className="coin-glow" />
-          <div className="hero-orbit hero-orbit-a"><i /><i /><i /></div>
-          <div className="hero-orbit hero-orbit-b"><i /><i /></div>
-          <div className="hero-flow-block flow-a">MONEY</div>
-          <div className="hero-flow-block flow-b">MARKETS</div>
-          <div className="hero-flow-block flow-c">APPS</div>
-          <div className="hero-flow-block flow-d">VALUE</div>
+          <div className="planet-halo halo-a" />
+          <div className="planet-halo halo-b" />
+          <div className="planet-halo halo-c" />
+          <div className="planet-halo halo-d" />
+          <div className="ring-dust dust-a" />
+          <div className="ring-dust dust-b" />
           <div
             className="hero-coin-core"
             role="img"
             aria-label="Economic OS artwork"
             style={{ backgroundImage: `url(${coinArt})` }}
           />
-          <div className="hero-core-label"><span>ECONOMIC OS CORE</span><b>ACTIVE</b></div>
         </div>
       </div>
       <style jsx>{`
-        .hero-core-scene{isolation:isolate}
-        .hero-coin-core{position:relative;z-index:6;width:min(520px,92%);aspect-ratio:1/1;border-radius:50%;background-size:cover;background-position:center;background-repeat:no-repeat;box-shadow:0 0 0 1px rgba(137,205,255,.42),0 0 95px rgba(34,132,255,.34),0 42px 100px rgba(0,0,0,.58);animation:heroFloat 5.8s ease-in-out infinite}
-        .hero-orbit{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid rgba(80,160,255,.22);border-radius:50%;z-index:2;pointer-events:none}
-        .hero-orbit-a{width:108%;aspect-ratio:1;animation:orbitSpin 20s linear infinite}
-        .hero-orbit-b{width:90%;aspect-ratio:1;border-style:dashed;animation:orbitSpin 15s linear infinite reverse}
-        .hero-orbit i{position:absolute;width:8px;height:8px;border-radius:50%;background:#4aa7ff;box-shadow:0 0 18px #2589ff}
-        .hero-orbit-a i:nth-child(1){left:8%;top:28%}.hero-orbit-a i:nth-child(2){right:9%;top:45%}.hero-orbit-a i:nth-child(3){left:44%;bottom:-4px}
-        .hero-orbit-b i:nth-child(1){right:13%;top:16%}.hero-orbit-b i:nth-child(2){left:7%;bottom:24%}
-        .hero-flow-block{position:absolute;z-index:4;padding:8px 11px;border:1px solid rgba(91,176,255,.28);border-radius:8px;background:rgba(5,20,38,.86);backdrop-filter:blur(8px);font:8px monospace;letter-spacing:.08em;color:#abd8ff;box-shadow:0 8px 24px rgba(0,0,0,.28);animation:blockDrift 6s ease-in-out infinite}
-        .flow-a{left:3%;top:22%}.flow-b{right:1%;top:30%;animation-delay:-1.5s}.flow-c{left:8%;bottom:18%;animation-delay:-3s}.flow-d{right:4%;bottom:22%;animation-delay:-4.2s}
-        .hero-core-label{position:absolute;z-index:7;left:50%;bottom:23px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;padding:8px 11px;border:1px solid rgba(93,175,255,.22);border-radius:999px;background:rgba(3,14,27,.76);backdrop-filter:blur(8px);white-space:nowrap}
-        .hero-core-label span{font:8px monospace;letter-spacing:.1em;color:#87b9e7}.hero-core-label b{font:8px monospace;color:#65b7ff}.hero-core-label b:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;margin-right:6px;background:#4ba6ff;box-shadow:0 0 9px #2c8fff}
-        @keyframes heroFloat{50%{transform:translateY(-9px)}}
-        @keyframes orbitSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-        @keyframes blockDrift{50%{transform:translateY(-8px);border-color:rgba(100,185,255,.46);box-shadow:0 0 28px rgba(30,122,240,.14)}}
-        @media(max-width:760px){.hero-orbit-a{width:105%}.hero-orbit-b{width:87%}.hero-flow-block{font-size:7px;padding:6px 8px}.flow-a{left:0}.flow-b{right:0}.flow-c{left:2%}.flow-d{right:2%}.hero-core-label{bottom:8px}}
-        @media(prefers-reduced-motion:reduce){.hero-coin-core,.hero-orbit,.hero-flow-block{animation:none}}
+        .hero-planet-scene{isolation:isolate;perspective:1100px}
+        .hero-coin-core{position:relative;z-index:6;width:min(470px,84%);aspect-ratio:1/1;border-radius:50%;background-size:cover;background-position:center;background-repeat:no-repeat;box-shadow:0 0 0 1px rgba(137,205,255,.4),0 0 90px rgba(34,132,255,.3),0 44px 100px rgba(0,0,0,.58);animation:heroFloat 6s ease-in-out infinite}
+        .planet-halo{position:absolute;left:50%;top:50%;border-radius:50%;pointer-events:none;z-index:3;transform-style:preserve-3d}
+        .halo-a{width:118%;height:34%;border:1px solid rgba(96,178,255,.5);transform:translate(-50%,-50%) rotateZ(-12deg) rotateX(68deg);box-shadow:0 0 22px rgba(60,145,255,.15);animation:ringOrbitA 14s linear infinite}
+        .halo-b{width:106%;height:28%;border:2px solid rgba(53,135,235,.32);transform:translate(-50%,-50%) rotateZ(18deg) rotateX(72deg);animation:ringOrbitB 18s linear infinite reverse}
+        .halo-c{width:92%;height:22%;border:1px solid rgba(129,201,255,.28);transform:translate(-50%,-50%) rotateZ(-32deg) rotateX(74deg);animation:ringOrbitC 11s linear infinite}
+        .halo-d{width:128%;height:42%;border:1px dashed rgba(74,154,238,.18);transform:translate(-50%,-50%) rotateZ(7deg) rotateX(76deg);animation:ringOrbitD 24s linear infinite}
+        .ring-dust{position:absolute;left:50%;top:50%;z-index:2;border-radius:50%;pointer-events:none;filter:blur(.2px)}
+        .dust-a{width:124%;height:38%;transform:translate(-50%,-50%) rotateZ(-10deg) rotateX(70deg);background:radial-gradient(circle at 5% 50%,rgba(84,169,255,.9) 0 2px,transparent 2.8px),radial-gradient(circle at 23% 46%,rgba(84,169,255,.55) 0 1px,transparent 2px),radial-gradient(circle at 76% 54%,rgba(84,169,255,.7) 0 1.5px,transparent 2.3px),radial-gradient(circle at 94% 49%,rgba(84,169,255,.8) 0 1.8px,transparent 2.5px);animation:dustMove 9s linear infinite}
+        .dust-b{width:112%;height:32%;transform:translate(-50%,-50%) rotateZ(22deg) rotateX(73deg);background:radial-gradient(circle at 11% 52%,rgba(130,202,255,.7) 0 1px,transparent 2px),radial-gradient(circle at 41% 48%,rgba(130,202,255,.55) 0 1.3px,transparent 2.2px),radial-gradient(circle at 68% 55%,rgba(130,202,255,.7) 0 1px,transparent 2px),radial-gradient(circle at 88% 45%,rgba(130,202,255,.5) 0 1.5px,transparent 2.3px);animation:dustMove 13s linear infinite reverse}
+        @keyframes heroFloat{50%{transform:translateY(-10px)}}
+        @keyframes ringOrbitA{to{transform:translate(-50%,-50%) rotateZ(348deg) rotateX(68deg)}}
+        @keyframes ringOrbitB{to{transform:translate(-50%,-50%) rotateZ(378deg) rotateX(72deg)}}
+        @keyframes ringOrbitC{to{transform:translate(-50%,-50%) rotateZ(328deg) rotateX(74deg)}}
+        @keyframes ringOrbitD{to{transform:translate(-50%,-50%) rotateZ(367deg) rotateX(76deg)}}
+        @keyframes dustMove{to{rotate:360deg}}
+        @media(max-width:760px){.hero-coin-core{width:min(390px,78%)}.halo-a{width:112%}.halo-b{width:102%}.halo-c{width:90%}.halo-d{width:120%}.dust-a{width:118%}.dust-b{width:106%}}
+        @media(prefers-reduced-motion:reduce){.hero-coin-core,.planet-halo,.ring-dust{animation:none}}
       `}</style>
     </section>
   );
