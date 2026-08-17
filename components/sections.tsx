@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, Copy, ExternalLink, Globe2, Layers3, ShieldCheck, Sparkles, Users } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { site } from "../lib/config";
 
 const coinArt = "/economic-os-coin.webp?v=20260815-final";
@@ -22,8 +22,39 @@ function shortContract(contract: string | null) {
   return `${contract.slice(0, 6)}...${contract.slice(-4)}`;
 }
 
+function useTypewriter(text: string, speed = 55, pause = 1500) {
+  const [value, setValue] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const doneTyping = value === text && !deleting;
+    const doneDeleting = value === "" && deleting;
+    const delay = doneTyping ? pause : doneDeleting ? 350 : deleting ? Math.max(24, speed / 2) : speed;
+
+    const timer = window.setTimeout(() => {
+      if (doneTyping) {
+        setDeleting(true);
+        return;
+      }
+      if (doneDeleting) {
+        setDeleting(false);
+        return;
+      }
+      setValue(deleting ? text.slice(0, Math.max(0, value.length - 1)) : text.slice(0, value.length + 1));
+    }, delay);
+
+    return () => window.clearTimeout(timer);
+  }, [value, deleting, text, speed, pause]);
+
+  return value;
+}
+
 export function Hero() {
   const [copied, setCopied] = useState(false);
+  const typedTitle = useTypewriter("Economic OS", 90, 1800);
+  const typedLine = useTypewriter("Arc builds the infrastructure. Economic OS carries the culture.", 32, 1500);
+  const typedSub = useTypewriter("A community meme inspired by Arc’s defining vision for a programmable internet economy.", 24, 1350);
+
   const copy = async () => {
     if (!site.token.contract) return;
     await navigator.clipboard.writeText(site.token.contract);
@@ -37,9 +68,9 @@ export function Hero() {
       <div className="hero-v2-inner">
         <div className="hero-copy-v2">
           <span className="hero-kicker">THE ECONOMIC OS FOR THE INTERNET</span>
-          <h1>Economic OS</h1>
-          <p>Arc builds the infrastructure. Economic OS carries the culture.</p>
-          <p className="hero-sub">A community meme inspired by Arc’s defining vision for a programmable internet economy.</p>
+          <h1 className="hero-title-nowrap"><span>{typedTitle}</span><i className="type-cursor" /></h1>
+          <p className="typed-hero-line"><span>{typedLine}</span><i className="type-cursor small" /></p>
+          <p className="hero-sub typed-hero-sub"><span>{typedSub}</span><i className="type-cursor small" /></p>
           <div className="hero-actions-v2">
             <a className="primary-btn" href={site.links.dex ?? "#token"} target="_blank" rel="noreferrer">View on RadarDEX <ExternalLink size={16} /></a>
             <button className="secondary-btn" onClick={copy}>{copied ? <Check size={16} /> : <Copy size={16} />}{copied ? "Copied" : "Contract Address"}</button>
@@ -64,6 +95,11 @@ export function Hero() {
         </div>
       </div>
       <style jsx>{`
+        .hero-title-nowrap{white-space:nowrap;font-size:clamp(48px,5.8vw,88px)!important;min-height:.95em;display:flex;align-items:center;gap:6px}
+        .typed-hero-line{min-height:3.1em}
+        .typed-hero-sub{min-height:5.1em}
+        .type-cursor{display:inline-block;width:3px;height:.78em;background:#59b6ff;box-shadow:0 0 12px rgba(61,162,255,.65);animation:cursorBlink .8s steps(1) infinite;flex:none}
+        .type-cursor.small{width:2px;height:1em;margin-left:4px;vertical-align:-.12em}
         .hero-planet-scene{isolation:isolate;perspective:1100px}
         .hero-coin-core{position:relative;z-index:6;width:min(470px,84%);aspect-ratio:1/1;border-radius:50%;background-size:cover;background-position:center;background-repeat:no-repeat;box-shadow:0 0 0 1px rgba(137,205,255,.4),0 0 90px rgba(34,132,255,.3),0 44px 100px rgba(0,0,0,.58);animation:heroFloat 6s ease-in-out infinite}
         .planet-halo{position:absolute;left:50%;top:50%;border-radius:50%;pointer-events:none;z-index:3;transform-style:preserve-3d}
@@ -74,14 +110,15 @@ export function Hero() {
         .ring-dust{position:absolute;left:50%;top:50%;z-index:2;border-radius:50%;pointer-events:none;filter:blur(.2px)}
         .dust-a{width:124%;height:38%;transform:translate(-50%,-50%) rotateZ(-10deg) rotateX(70deg);background:radial-gradient(circle at 5% 50%,rgba(84,169,255,.9) 0 2px,transparent 2.8px),radial-gradient(circle at 23% 46%,rgba(84,169,255,.55) 0 1px,transparent 2px),radial-gradient(circle at 76% 54%,rgba(84,169,255,.7) 0 1.5px,transparent 2.3px),radial-gradient(circle at 94% 49%,rgba(84,169,255,.8) 0 1.8px,transparent 2.5px);animation:dustMove 9s linear infinite}
         .dust-b{width:112%;height:32%;transform:translate(-50%,-50%) rotateZ(22deg) rotateX(73deg);background:radial-gradient(circle at 11% 52%,rgba(130,202,255,.7) 0 1px,transparent 2px),radial-gradient(circle at 41% 48%,rgba(130,202,255,.55) 0 1.3px,transparent 2.2px),radial-gradient(circle at 68% 55%,rgba(130,202,255,.7) 0 1px,transparent 2px),radial-gradient(circle at 88% 45%,rgba(130,202,255,.5) 0 1.5px,transparent 2.3px);animation:dustMove 13s linear infinite reverse}
+        @keyframes cursorBlink{50%{opacity:0}}
         @keyframes heroFloat{50%{transform:translateY(-10px)}}
         @keyframes ringOrbitA{to{transform:translate(-50%,-50%) rotateZ(348deg) rotateX(68deg)}}
         @keyframes ringOrbitB{to{transform:translate(-50%,-50%) rotateZ(378deg) rotateX(72deg)}}
         @keyframes ringOrbitC{to{transform:translate(-50%,-50%) rotateZ(328deg) rotateX(74deg)}}
         @keyframes ringOrbitD{to{transform:translate(-50%,-50%) rotateZ(367deg) rotateX(76deg)}}
         @keyframes dustMove{to{rotate:360deg}}
-        @media(max-width:760px){.hero-coin-core{width:min(390px,78%)}.halo-a{width:112%}.halo-b{width:102%}.halo-c{width:90%}.halo-d{width:120%}.dust-a{width:118%}.dust-b{width:106%}}
-        @media(prefers-reduced-motion:reduce){.hero-coin-core,.planet-halo,.ring-dust{animation:none}}
+        @media(max-width:760px){.hero-title-nowrap{font-size:clamp(42px,12vw,62px)!important}.hero-coin-core{width:min(390px,78%)}.halo-a{width:112%}.halo-b{width:102%}.halo-c{width:90%}.halo-d{width:120%}.dust-a{width:118%}.dust-b{width:106%}}
+        @media(prefers-reduced-motion:reduce){.hero-coin-core,.planet-halo,.ring-dust,.type-cursor{animation:none}}
       `}</style>
     </section>
   );
@@ -134,7 +171,7 @@ export function Why() {
     [Globe2, "Internet Native", "Born from Arc’s vision of an Economic OS for the internet."],
     [ShieldCheck, "Transparent", "Contract and trading destination are visible and easy to verify."],
   ];
-  return <section className="section-v2 why-v2"><div className="section-heading-v2 centered"><span>WHY ECONOMIC OS?</span><h2>Culture around infrastructure.</h2></div><div className="why-grid-v2">{cards.map(([Icon,title,copy]:any)=><div key={title}><Icon size={30}/><h3>{title}</h3><p>{copy}</p></div>)}</div></section>;
+  return <section className="section-v2 why-v2"><div className="section-heading-v2 centered"><span>WHY ECONOMIC OS?</span><h2>Culture around infrastructure.</h2></div><div className="why-grid-v2">{cards.map(([Icon,title,copy]:any)=><div key={title}><Icon size={30}/><h3>{title}</h3><p>{copy}</p></div>)}</section>;
 }
 
 export function HowToBuy() {
