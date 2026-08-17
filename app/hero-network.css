@@ -1,0 +1,29 @@
+/* Living Economic OS network treatment for the hero. */
+.hero-v2{position:relative}
+.hero-planet-scene{transition:transform .35s ease;will-change:transform}
+.hero-planet-scene:hover{transform:perspective(1100px) rotateX(1.2deg) rotateY(-1.8deg) translateY(-2px)}
+.hero-planet-scene:hover .hero-coin-core{transform:translate3d(6px,-8px,18px) scale(1.012)}
+.hero-planet-scene:hover .halo-a{filter:brightness(1.18)}
+.hero-planet-scene:hover .halo-b{filter:brightness(1.1)}
+
+/* Orbiting network nodes */
+.hero-planet-scene .coin-glow:before,.hero-planet-scene .coin-glow:after{content:"";position:absolute;inset:-18%;border-radius:50%;pointer-events:none;z-index:1}
+.hero-planet-scene .coin-glow:before{background:radial-gradient(circle at 50% 5%,#7ed0ff 0 2px,transparent 3px),radial-gradient(circle at 86% 27%,#54adff 0 2px,transparent 3px),radial-gradient(circle at 95% 61%,#9bdcff 0 1.8px,transparent 3px),radial-gradient(circle at 72% 91%,#4eaaff 0 2px,transparent 3px),radial-gradient(circle at 28% 92%,#7cc9ff 0 1.7px,transparent 3px),radial-gradient(circle at 4% 58%,#4ca8ff 0 2px,transparent 3px),radial-gradient(circle at 14% 22%,#9edfff 0 1.6px,transparent 3px);filter:drop-shadow(0 0 8px rgba(64,165,255,.7));animation:heroNodeOrbit 22s linear infinite}
+.hero-planet-scene .coin-glow:after{inset:-4%;border:1px solid rgba(75,169,255,.08);background:conic-gradient(from 30deg,transparent 0 9%,rgba(72,167,255,.18) 9.2% 9.7%,transparent 10% 28%,rgba(99,190,255,.12) 28.2% 28.7%,transparent 29% 57%,rgba(72,167,255,.15) 57.2% 57.8%,transparent 58% 82%,rgba(111,200,255,.11) 82.2% 82.7%,transparent 83%);mask-image:radial-gradient(circle,transparent 0 43%,black 44% 47%,transparent 48%);animation:heroSignalSweep 15s linear infinite reverse}
+
+/* Data packets entering and leaving the core */
+.hero-stars:before{content:"";position:absolute;left:51%;top:17%;width:43%;height:66%;pointer-events:none;z-index:1;background:radial-gradient(circle,#74c8ff 0 2px,transparent 2.8px) 6% 18%/90px 90px,radial-gradient(circle,#3f9ef1 0 1.5px,transparent 2.5px) 67% 12%/120px 120px,radial-gradient(circle,#8bd6ff 0 1.7px,transparent 2.6px) 82% 70%/105px 105px,radial-gradient(circle,#4aa8ff 0 1.5px,transparent 2.5px) 23% 86%/125px 125px;opacity:.65;filter:drop-shadow(0 0 6px rgba(64,164,255,.55));animation:heroPacketDrift 13s linear infinite}
+.hero-stars:after{content:"";position:absolute;left:54%;top:25%;width:36%;height:48%;pointer-events:none;z-index:1;background:linear-gradient(115deg,transparent 0 20%,rgba(71,165,255,.12) 20.4% 20.7%,transparent 21% 46%,rgba(85,178,255,.08) 46.4% 46.7%,transparent 47% 72%,rgba(102,192,255,.1) 72.4% 72.7%,transparent 73%);mask-image:radial-gradient(ellipse at center,black 0 58%,transparent 80%);animation:heroLinkPulse 5.5s ease-in-out infinite}
+
+/* Thin economic flow ribbon along the bottom edge of the hero */
+.hero-v2:after{content:"VALUE   →   MARKETS   →   PAYMENTS   →   APPS   →   SETTLEMENT   →   VALUE   →   MARKETS   →   PAYMENTS   →   APPS   →   SETTLEMENT";position:absolute;left:0;bottom:18px;z-index:4;width:max-content;white-space:nowrap;font:8px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;color:rgba(112,184,241,.5);text-shadow:0 0 10px rgba(50,148,230,.24);animation:heroFlowRibbon 24s linear infinite;pointer-events:none}
+
+@keyframes heroNodeOrbit{to{transform:rotate(360deg)}}
+@keyframes heroSignalSweep{to{transform:rotate(360deg)}}
+@keyframes heroPacketDrift{0%{transform:translate3d(0,0,0) scale(1);opacity:.42}35%{transform:translate3d(-18px,12px,0) scale(1.04);opacity:.8}68%{transform:translate3d(12px,-8px,0) scale(.98);opacity:.56}100%{transform:translate3d(0,0,0) scale(1);opacity:.42}}
+@keyframes heroLinkPulse{0%,100%{opacity:.18;filter:brightness(.8)}50%{opacity:.72;filter:brightness(1.5)}}
+@keyframes heroFlowRibbon{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+@media(max-width:900px){.hero-stars:before,.hero-stars:after{opacity:.35}.hero-v2:after{font-size:7px;bottom:10px}.hero-planet-scene:hover{transform:none}.hero-planet-scene:hover .hero-coin-core{transform:none}}
+@media(max-width:700px){.hero-v2:after{display:none}.hero-stars:before,.hero-stars:after{display:none}.hero-planet-scene .coin-glow:before{opacity:.6}}
+@media(prefers-reduced-motion:reduce){.hero-planet-scene .coin-glow:before,.hero-planet-scene .coin-glow:after,.hero-stars:before,.hero-stars:after,.hero-v2:after{animation:none}.hero-planet-scene,.hero-coin-core{transition:none}}
