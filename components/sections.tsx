@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { site } from "../lib/config";
 
 const coinArt = "/economic-os-coin.webp?v=20260815-final";
+const arcVideoPage = "https://www.arc.io/?wvideo=fz4nbb1lui";
+const arcVideoEmbed = "https://fast.wistia.net/embed/iframe/fz4nbb1lui";
 
 const xPosts = [
   ["Jeremy Allaire 01", "https://x.com/jerallaire/status/2001665450057285774?s=20"],
@@ -86,21 +88,14 @@ export function Hero() {
           <div className="planet-halo halo-d" />
           <div className="ring-dust dust-a" />
           <div className="ring-dust dust-b" />
-          <div
-            className="hero-coin-core"
-            role="img"
-            aria-label="Economic OS artwork"
-            style={{ backgroundImage: `url(${coinArt})` }}
-          />
+          <div className="hero-coin-core" role="img" aria-label="Economic OS artwork" style={{ backgroundImage: `url(${coinArt})` }} />
         </div>
       </div>
       <style jsx>{`
         .hero-title-nowrap{white-space:nowrap;font-size:clamp(48px,5.8vw,88px)!important;min-height:.95em;display:flex;align-items:center;gap:6px}
-        .typed-hero-line{min-height:3.1em}
-        .typed-hero-sub{min-height:5.1em}
+        .typed-hero-line{min-height:3.1em}.typed-hero-sub{min-height:5.1em}
         .type-cursor{display:inline-block;width:3px;height:.78em;background:#59b6ff;box-shadow:0 0 12px rgba(61,162,255,.65);animation:cursorBlink .8s steps(1) infinite;flex:none}
-        .type-cursor.small{width:2px;height:1em;margin-left:4px;vertical-align:-.12em}
-        .hero-planet-scene{isolation:isolate;perspective:1100px}
+        .type-cursor.small{width:2px;height:1em;margin-left:4px;vertical-align:-.12em}.hero-planet-scene{isolation:isolate;perspective:1100px}
         .hero-coin-core{position:relative;z-index:6;width:min(470px,84%);aspect-ratio:1/1;border-radius:50%;background-size:cover;background-position:center;background-repeat:no-repeat;box-shadow:0 0 0 1px rgba(137,205,255,.4),0 0 90px rgba(34,132,255,.3),0 44px 100px rgba(0,0,0,.58);animation:heroFloat 6s ease-in-out infinite}
         .planet-halo{position:absolute;left:50%;top:50%;border-radius:50%;pointer-events:none;z-index:3;transform-style:preserve-3d}
         .halo-a{width:118%;height:34%;border:1px solid rgba(96,178,255,.5);transform:translate(-50%,-50%) rotateZ(-12deg) rotateX(68deg);box-shadow:0 0 22px rgba(60,145,255,.15);animation:ringOrbitA 14s linear infinite}
@@ -110,13 +105,9 @@ export function Hero() {
         .ring-dust{position:absolute;left:50%;top:50%;z-index:2;border-radius:50%;pointer-events:none;filter:blur(.2px)}
         .dust-a{width:124%;height:38%;transform:translate(-50%,-50%) rotateZ(-10deg) rotateX(70deg);background:radial-gradient(circle at 5% 50%,rgba(84,169,255,.9) 0 2px,transparent 2.8px),radial-gradient(circle at 23% 46%,rgba(84,169,255,.55) 0 1px,transparent 2px),radial-gradient(circle at 76% 54%,rgba(84,169,255,.7) 0 1.5px,transparent 2.3px),radial-gradient(circle at 94% 49%,rgba(84,169,255,.8) 0 1.8px,transparent 2.5px);animation:dustMove 9s linear infinite}
         .dust-b{width:112%;height:32%;transform:translate(-50%,-50%) rotateZ(22deg) rotateX(73deg);background:radial-gradient(circle at 11% 52%,rgba(130,202,255,.7) 0 1px,transparent 2px),radial-gradient(circle at 41% 48%,rgba(130,202,255,.55) 0 1.3px,transparent 2.2px),radial-gradient(circle at 68% 55%,rgba(130,202,255,.7) 0 1px,transparent 2px),radial-gradient(circle at 88% 45%,rgba(130,202,255,.5) 0 1.5px,transparent 2.3px);animation:dustMove 13s linear infinite reverse}
-        @keyframes cursorBlink{50%{opacity:0}}
-        @keyframes heroFloat{50%{transform:translateY(-10px)}}
-        @keyframes ringOrbitA{to{transform:translate(-50%,-50%) rotateZ(348deg) rotateX(68deg)}}
-        @keyframes ringOrbitB{to{transform:translate(-50%,-50%) rotateZ(378deg) rotateX(72deg)}}
-        @keyframes ringOrbitC{to{transform:translate(-50%,-50%) rotateZ(328deg) rotateX(74deg)}}
-        @keyframes ringOrbitD{to{transform:translate(-50%,-50%) rotateZ(367deg) rotateX(76deg)}}
-        @keyframes dustMove{to{rotate:360deg}}
+        @keyframes cursorBlink{50%{opacity:0}}@keyframes heroFloat{50%{transform:translateY(-10px)}}
+        @keyframes ringOrbitA{to{transform:translate(-50%,-50%) rotateZ(348deg) rotateX(68deg)}}@keyframes ringOrbitB{to{transform:translate(-50%,-50%) rotateZ(378deg) rotateX(72deg)}}
+        @keyframes ringOrbitC{to{transform:translate(-50%,-50%) rotateZ(328deg) rotateX(74deg)}}@keyframes ringOrbitD{to{transform:translate(-50%,-50%) rotateZ(367deg) rotateX(76deg)}}@keyframes dustMove{to{rotate:360deg}}
         @media(max-width:760px){.hero-title-nowrap{font-size:clamp(42px,12vw,62px)!important}.hero-coin-core{width:min(390px,78%)}.halo-a{width:112%}.halo-b{width:102%}.halo-c{width:90%}.halo-d{width:120%}.dust-a{width:118%}.dust-b{width:106%}}
         @media(prefers-reduced-motion:reduce){.hero-coin-core,.planet-halo,.ring-dust,.type-cursor{animation:none}}
       `}</style>
@@ -133,10 +124,17 @@ export function About() {
         <div className="about-panel-v2"><h3>Economic OS carries the signal.</h3><p>The meme, language and identity that forms around the idea of the internet having its own Economic OS.</p></div>
       </div>
       <div className="arc-vision-v2">
-        <img src="https://cdn.prod.website-files.com/685311a976e7c248b5dfde95/69a89025ecef8ed387934993_arc-video.jpg" alt="Arc Economic OS vision" />
-        <div><span>OFFICIAL ARC VISION</span><h3>The Economic OS for the internet.</h3><p>This official Arc narrative is shown for context. Economic OS remains an independent community meme and is not an Arc or Circle-issued asset.</p><a href={site.sources.arc} target="_blank" rel="noreferrer">View Arc source <ExternalLink size={14} /></a></div>
+        <div className="arc-video-v2">
+          <iframe src={arcVideoEmbed} title="Arc — The Economic OS for the internet" allow="autoplay; fullscreen" allowFullScreen loading="lazy" />
+        </div>
+        <div><span>OFFICIAL ARC VISION</span><h3>The Economic OS for the internet.</h3><p>This official Arc narrative is shown for context. Economic OS remains an independent community meme and is not an Arc or Circle-issued asset.</p><a href={arcVideoPage} target="_blank" rel="noreferrer">View original Arc video <ExternalLink size={14} /></a></div>
       </div>
       <div className="signals-v2"><span>OFFICIAL SIGNALS</span><div>{xPosts.map(([label, href]) => <a key={href} href={href} target="_blank" rel="noreferrer">{label}<ExternalLink size={11} /></a>)}</div></div>
+      <style jsx>{`
+        .arc-video-v2{position:relative;min-height:310px;background:#020914;overflow:hidden}
+        .arc-video-v2 iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+        @media(max-width:760px){.arc-video-v2{aspect-ratio:16/9;min-height:0}}
+      `}</style>
     </section>
   );
 }
@@ -149,10 +147,7 @@ export function Token() {
       <div className="token-card-v2">
         <div className="token-identity-v2"><img src={coinArt} alt="Economic OS artwork" /><div><span>ECONOMIC OS</span><h3>Economic OS</h3><p>Community. Culture. Internet-native identity.</p></div></div>
         <div className="token-stats-v2">
-          <div><span>Token Name</span><b>Economic OS</b></div>
-          <div><span>Ticker</span><b>Economic OS</b></div>
-          <div><span>Network</span><b>ARC</b></div>
-          <div><span>Contract</span><b className="contract-short">{shortContract(site.token.contract)}</b></div>
+          <div><span>Token Name</span><b>Economic OS</b></div><div><span>Ticker</span><b>Economic OS</b></div><div><span>Network</span><b>ARC</b></div><div><span>Contract</span><b className="contract-short">{shortContract(site.token.contract)}</b></div>
         </div>
       </div>
       <div className="token-links-v2">
@@ -165,12 +160,7 @@ export function Token() {
 }
 
 export function Why() {
-  const cards = [
-    [Users, "Community First", "Built by the Arc community, for the community."],
-    [Sparkles, "Cultural Power", "A narrative turned into a recognizable community signal."],
-    [Globe2, "Internet Native", "Born from Arc’s vision of an Economic OS for the internet."],
-    [ShieldCheck, "Transparent", "Contract and trading destination are visible and easy to verify."],
-  ];
+  const cards = [[Users,"Community First","Built by the Arc community, for the community."],[Sparkles,"Cultural Power","A narrative turned into a recognizable community signal."],[Globe2,"Internet Native","Born from Arc’s vision of an Economic OS for the internet."],[ShieldCheck,"Transparent","Contract and trading destination are visible and easy to verify."]];
   return <section className="section-v2 why-v2"><div className="section-heading-v2 centered"><span>WHY ECONOMIC OS?</span><h2>Culture around infrastructure.</h2></div><div className="why-grid-v2">{cards.map(([Icon,title,copy]:any)=><div key={title}><Icon size={30}/><h3>{title}</h3><p>{copy}</p></div>)}</div></section>;
 }
 
