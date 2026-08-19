@@ -1,0 +1,86 @@
+/* Premium Build-only polish. No continuous animations, no blur, no backdrop-filter, no relational selectors. */
+#build{--premium-line:rgba(118,205,255,.52);--premium-soft:rgba(72,169,229,.12);--premium-deep:#061625;--premium-deeper:#03101b}
+
+/* Board framing: richer depth using static gradients only. */
+#build .board{border-color:rgba(65,142,194,.46)!important;box-shadow:0 18px 44px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.025)!important}
+#build .board main{background:radial-gradient(circle at 50% 50%,rgba(20,86,137,.34),transparent 34%),linear-gradient(180deg,#03111e 0%,#020a12 100%)!important}
+#build .board main:after{content:"";position:absolute;inset:12px;pointer-events:none;border:1px solid rgba(82,173,231,.08);clip-path:polygon(0 0,36px 0,36px 1px,1px 1px,1px 36px,0 36px,0 0,100% 0,100% 36px,calc(100% - 1px) 36px,calc(100% - 1px) 1px,calc(100% - 36px) 1px,calc(100% - 36px) 0,100% 0,100% 100%,calc(100% - 36px) 100%,calc(100% - 36px) calc(100% - 1px),calc(100% - 1px) calc(100% - 1px),calc(100% - 1px) calc(100% - 36px),100% calc(100% - 36px),100% 100%,0 100%,0 calc(100% - 36px),1px calc(100% - 36px),1px calc(100% - 1px),36px calc(100% - 1px),36px 100%,0 100%)}
+
+/* HUD feels like instrument glass without expensive effects. */
+#build .hud{border-color:rgba(70,151,205,.5)!important;background:linear-gradient(180deg,#061522,#04101a)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)!important}
+#build .hud>div{position:relative!important;background:linear-gradient(180deg,rgba(12,36,56,.38),rgba(3,15,25,.05))!important}
+#build .hud>div:after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(96,193,247,.18),transparent)}
+#build .hud small{color:#668ba7!important;letter-spacing:.1em!important}
+#build .hud b{color:#c9eaff!important;font-weight:700!important;text-shadow:0 0 10px rgba(74,177,236,.12)!important}
+
+/* Objective strip: cleaner mission readout. */
+#build .objective{border-color:rgba(61,132,181,.42)!important;background:linear-gradient(90deg,#04111d,#061827,#04111d)!important}
+#build .objective span{padding:3px 6px;border:1px solid rgba(87,170,222,.24);border-radius:4px;background:#061725;color:#70bce7!important}
+#build .objective b{color:#b8ddf5!important;letter-spacing:.04em!important}
+
+/* Primary action: solid premium hardware button, no continuous animation. */
+#build .process{overflow:hidden!important;border-color:#78cfff!important;background:linear-gradient(180deg,#188fe4 0%,#0c68b8 58%,#0a579d 100%)!important;box-shadow:0 10px 22px rgba(0,88,158,.24),inset 0 1px 0 rgba(255,255,255,.25),inset 0 -1px 0 rgba(0,0,0,.22)!important}
+#build .process:before{content:"CYCLE CONTROL";display:block;margin-bottom:4px;font-size:6px;letter-spacing:.14em;color:rgba(221,245,255,.68);font-weight:500}
+#build .process:hover:not(:disabled){background:linear-gradient(180deg,#1d9bf2,#0d70c6 58%,#0b5eaa)!important;border-color:#9bddff!important;box-shadow:0 12px 26px rgba(0,100,178,.28),inset 0 1px 0 rgba(255,255,255,.3)!important}
+#build .process:active:not(:disabled){transform:translateY(1px)!important;box-shadow:0 6px 14px rgba(0,74,133,.22),inset 0 1px 2px rgba(0,0,0,.16)!important}
+
+/* Smart action: secondary control module. */
+#build .smart-action{position:relative!important;padding:11px 12px!important;border:1px solid rgba(75,158,210,.48)!important;background:linear-gradient(180deg,#082238,#051724)!important;box-shadow:inset 3px 0 0 rgba(78,185,245,.45)!important}
+#build .smart-action:hover{border-color:#5ab7eb!important;background:linear-gradient(180deg,#0a2b45,#061b2c)!important}
+
+/* Sector modules: more expensive-looking shell using static highlights. */
+#build .sector{background:linear-gradient(150deg,#092136 0%,#051521 46%,#020b13 100%)!important;box-shadow:0 10px 22px rgba(0,0,0,.34),inset 0 0 0 1px rgba(78,151,198,.44),inset 0 1px 0 rgba(255,255,255,.025)!important}
+#build .sector:before{background:linear-gradient(135deg,rgba(31,78,108,.58),rgba(5,18,29,.92))!important;border-left-color:rgba(79,177,231,.36)!important}
+#build .sector:after{height:2px!important;left:14px!important;right:14px!important;background:linear-gradient(90deg,transparent,rgba(116,207,255,.42),transparent)!important}
+#build .sector b{font-weight:800!important;color:#b8cddd!important}
+#build .sector small{color:#5f829b!important}
+#build .sector>i{background:linear-gradient(145deg,#154b6d,#0b2b41)!important;border-color:rgba(108,205,255,.5)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07)!important}
+#build .sector.online{background:linear-gradient(150deg,#0d3b60 0%,#08253c 48%,#031421 100%)!important;box-shadow:0 12px 26px rgba(0,0,0,.38),0 0 0 1px rgba(93,196,255,.72),0 0 18px rgba(35,144,210,.13),inset 0 1px 0 rgba(255,255,255,.04)!important}
+#build .sector.online:before{background:linear-gradient(135deg,rgba(26,86,124,.7),rgba(5,24,39,.95))!important;border-left-color:#60c6ff!important}
+#build .sector.online b{color:#eefaff!important}
+#build .sector.online small{color:#81c9ef!important}
+#build .sector:hover{transform:translate(-50%,-54%) scale(1.025)!important;box-shadow:0 14px 30px rgba(0,0,0,.4),0 0 0 1px rgba(116,210,255,.92),0 0 18px rgba(53,161,225,.14)!important}
+
+/* Better hover detail tag. */
+#build .node-detail{min-width:118px!important;text-align:center!important;border-color:rgba(89,181,232,.7)!important;background:linear-gradient(180deg,#061c2d,#03121e)!important;color:#c5e9ff!important;box-shadow:0 10px 22px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.025)!important}
+
+/* Core: premium static halo built from box-shadow only. */
+#build .core img{border:1px solid rgba(151,222,255,.42)!important;box-shadow:0 0 0 5px rgba(45,148,211,.045),0 0 0 11px rgba(49,145,204,.025),0 0 26px rgba(65,180,245,.32),0 0 48px rgba(30,119,194,.12)!important}
+#build .ring{border-color:rgba(92,189,243,.42)!important}
+#build .r2{border-color:rgba(108,204,255,.24)!important}
+#build .r3,#build .depth-ring{border-color:rgba(92,182,231,.18)!important}
+#build .core span{border-color:rgba(73,166,220,.55)!important;background:linear-gradient(180deg,#061c2d,#03121e)!important;color:#8fd4fb!important;box-shadow:0 7px 18px rgba(0,0,0,.35)!important}
+
+/* Routes: stronger visual hierarchy without filters. */
+#build .route{stroke:#6cc9fb!important;opacity:.88!important}
+#build .route.lvl2{stroke:#8bd8ff!important;opacity:.94!important}
+#build .route.lvl3{stroke:#b1eaff!important;opacity:1!important}
+#build .data{background:#d9f5ff!important;box-shadow:0 0 6px rgba(97,204,255,.72)!important}
+
+/* Right-side status cards */
+#build aside{background:linear-gradient(180deg,#061522,#03101a)!important}
+#build .stress,#build .system-status,#build .combo-live{border-color:rgba(64,137,185,.44)!important;background:linear-gradient(180deg,#061927,#04121d)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.02)!important}
+#build .stress span,#build .system-status span,#build .combo-live span{color:#668ca8!important;letter-spacing:.12em!important}
+#build .stress b,#build .system-status b{color:#b9dff8!important}
+#build .stress>div{height:4px!important;background:#0a2336!important}
+#build .stress>div i{background:linear-gradient(90deg,#2585c4,#6acbff)!important}
+
+/* Tabs */
+#build nav{background:#04111d!important;border-color:rgba(60,132,181,.44)!important}
+#build nav button{color:#5f8098!important;border-color:rgba(54,119,162,.4)!important}
+#build nav button.on{background:linear-gradient(180deg,#092842,#061c2f)!important;color:#c3e6fb!important;box-shadow:inset 0 -2px 0 #4eb7ef!important}
+
+/* Setup cards get the same material system. */
+#build .setup{background:linear-gradient(180deg,#04131f,#020c15)!important;border-color:rgba(64,139,188,.42)!important;box-shadow:0 18px 40px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.02)!important}
+#build .record{background:#04111c!important;border-color:rgba(59,131,178,.42)!important}
+#build .record span{border-color:rgba(59,131,178,.34)!important}
+#build .record b{color:#d0ecff!important}
+
+/* Event choices feel premium but remain cheap to render. */
+#build .event{background:linear-gradient(180deg,#17130f,#0b0e11)!important;border-color:rgba(221,151,86,.7)!important}
+#build .event h3{color:#ffe0be!important}
+#build .event button{border-color:rgba(205,144,88,.48)!important;background:linear-gradient(180deg,#1f1913,#131313)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)!important}
+#build .event button:hover{border-color:#efa86c!important;background:linear-gradient(180deg,#2a1e14,#171515)!important}
+
+/* Mobile keeps the same hierarchy without extra load. */
+@media(max-width:620px){#build .process:before{display:none}#build .board{box-shadow:0 12px 28px rgba(0,0,0,.3)!important}#build .sector{box-shadow:0 8px 16px rgba(0,0,0,.3),inset 0 0 0 1px rgba(78,151,198,.42)!important}}
