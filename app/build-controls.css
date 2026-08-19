@@ -16,11 +16,6 @@
 #build .launch:after{content:"  →";display:inline-block;margin-left:8px;transition:transform .18s ease}
 #build .launch:hover{filter:brightness(1.08);box-shadow:0 13px 34px rgba(7,122,221,.3),inset 0 1px rgba(255,255,255,.22)!important}
 #build .launch:hover:after{transform:translateX(3px)}
-#build .sector{border-radius:7px!important;border-color:rgba(58,116,157,.5)!important;background:linear-gradient(180deg,rgba(5,24,42,.98),rgba(3,16,29,.98))!important;box-shadow:0 9px 22px rgba(0,0,0,.28)!important}
-#build .sector:hover{transform:translate(-50%,-52%)!important;border-color:#59baff!important;background:linear-gradient(180deg,#0a2b49,#061d33)!important;box-shadow:0 12px 30px rgba(0,0,0,.34),0 0 0 1px rgba(89,186,255,.08)!important}
-#build .sector.online{border-color:rgba(72,177,247,.72)!important;background:linear-gradient(180deg,#0a3152,#061d33)!important;box-shadow:inset 2px 0 #4db8ff,0 10px 28px rgba(0,0,0,.3)!important}
-#build .sector small{margin-top:6px!important;color:#6e9cbd!important;letter-spacing:.04em!important}
-#build .sector.online small{color:#83cfff!important}
 #build aside>span:after{content:"  / CONTROL";color:#466a84}
 #build .actions{gap:8px!important;margin:14px 0 10px!important}
 #build .actions button{position:relative!important;min-height:58px!important;padding:10px 10px 21px!important;border-radius:7px!important;border:1px solid rgba(57,117,159,.5)!important;background:linear-gradient(180deg,#071d31,#051624)!important;color:#b6d7ee!important;text-align:left!important;font-weight:700!important;box-shadow:inset 0 1px rgba(255,255,255,.025)!important}
@@ -53,4 +48,62 @@
 #build .result button{min-height:40px!important;border-radius:7px!important;border-color:#469dd8!important;background:linear-gradient(180deg,#0b3556,#08263f)!important;color:#ccecff!important;font-weight:700!important}
 #build .result button:after{content:"  →";display:inline-block;margin-left:6px;transition:transform .18s ease}
 #build .result button:hover:after{transform:translateX(3px)}
-@media(max-width:620px){#build .actions button{min-height:62px!important}#build .process{min-height:56px!important}#build .event button{min-height:62px!important}}
+
+/* --- CINEMATIC NETWORK MODULES --- */
+/* Make active links feel like energized conduits instead of static diagram lines. */
+#build .route{stroke:#5cc3ff!important;stroke-width:.22!important;stroke-dasharray:.65 1.15!important;stroke-linecap:round!important;filter:drop-shadow(0 0 3px #65c7ff) drop-shadow(0 0 9px rgba(42,153,255,.72))!important;animation:buildRouteFlow .72s linear infinite,buildRoutePulse 1.8s ease-in-out infinite!important}
+#build .route.lvl2{stroke-width:.34!important;stroke-dasharray:.9 .7!important;filter:drop-shadow(0 0 4px #79d3ff) drop-shadow(0 0 13px rgba(47,171,255,.82))!important;animation-duration:.58s,1.55s!important}
+#build .route.lvl3{stroke-width:.48!important;stroke:#8dddff!important;stroke-dasharray:1.2 .42!important;filter:drop-shadow(0 0 5px #a6e7ff) drop-shadow(0 0 18px rgba(51,183,255,.95))!important;animation-duration:.42s,1.25s!important}
+#build .highflow .route{animation-duration:.32s,1s!important}
+#build .route.threat{stroke:#ff8066!important;filter:drop-shadow(0 0 5px #ff6b55) drop-shadow(0 0 16px rgba(255,83,52,.8))!important;animation:buildRouteFlow .35s linear infinite,buildThreatPulse .45s ease-in-out infinite alternate!important}
+
+/* Data packets become bright directional pulses traveling on top of the conduits. */
+#build .data{width:6px!important;height:6px!important;border-radius:2px!important;background:#c5efff!important;box-shadow:0 0 4px #fff,0 0 12px #58c4ff,0 0 24px rgba(52,168,255,.8)!important}
+#build .highflow .data{width:7px!important;height:7px!important;box-shadow:0 0 5px #fff,0 0 15px #6bd0ff,0 0 30px #279eff!important}
+
+/* Sector buttons become compact futuristic modules with cut corners and layered frames. */
+#build .sector{width:116px!important;min-height:66px!important;padding:12px 12px 10px!important;border:0!important;border-radius:0!important;clip-path:polygon(9px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 9px),calc(100% - 9px) 100%,10px 100%,0 calc(100% - 10px),0 9px)!important;background:linear-gradient(145deg,rgba(7,29,50,.97),rgba(3,14,25,.99))!important;color:#7b99af!important;box-shadow:0 12px 28px rgba(0,0,0,.36),inset 0 0 0 1px rgba(66,140,192,.4)!important;overflow:visible!important;isolation:isolate!important}
+#build .sector:before{content:"";position:absolute;inset:2px;z-index:-1;clip-path:inherit;background:linear-gradient(135deg,rgba(19,60,91,.5),rgba(3,15,26,.75));border-left:2px solid rgba(66,161,221,.24);transition:.18s}
+#build .sector:after{content:"";position:absolute;left:10px;right:10px;top:7px;height:1px;background:linear-gradient(90deg,transparent,rgba(102,199,255,.35),transparent);box-shadow:0 0 8px rgba(73,177,244,.22);transition:.18s}
+#build .sector>i{position:relative!important;width:12px!important;height:12px!important;margin:0 auto 8px!important;border:1px solid rgba(87,179,238,.56)!important;border-radius:3px!important;transform:rotate(45deg)!important;background:rgba(17,80,121,.2)!important;box-shadow:inset 0 0 8px rgba(68,178,245,.08)!important}
+#build .sector>i:after{content:"";position:absolute;inset:3px;border-radius:1px;background:#365f7a;box-shadow:0 0 5px rgba(57,139,190,.2)}
+#build .sector b{font-size:9px!important;letter-spacing:.11em!important;color:#a4b8c7!important;text-shadow:none!important}
+#build .sector small{margin-top:5px!important;font-size:6px!important;letter-spacing:.12em!important;color:#4e7189!important}
+
+/* Offline modules are deliberately quiet; online modules become energized hardware. */
+#build .sector.online{background:linear-gradient(145deg,rgba(9,45,75,.99),rgba(3,20,35,.99))!important;color:#e1f4ff!important;box-shadow:0 15px 34px rgba(0,0,0,.38),0 0 0 1px rgba(73,183,255,.72),0 0 24px rgba(27,139,217,.16)!important}
+#build .sector.online:before{background:radial-gradient(circle at 50% 0,rgba(51,161,229,.2),transparent 56%),linear-gradient(135deg,rgba(16,55,84,.66),rgba(4,18,31,.92));border-left-color:#49b7f5}
+#build .sector.online:after{background:linear-gradient(90deg,transparent,#77d2ff,transparent);box-shadow:0 0 11px rgba(82,194,255,.65)}
+#build .sector.online>i{border-color:#75ceff!important;background:rgba(42,163,230,.16)!important;box-shadow:0 0 11px rgba(65,183,244,.38),inset 0 0 8px rgba(75,195,255,.25)!important}
+#build .sector.online>i:after{background:#71d0ff;box-shadow:0 0 5px #fff,0 0 14px #43b8ff}
+#build .sector.online b{color:#e8f8ff!important;text-shadow:0 0 10px rgba(85,197,255,.22)!important}
+#build .sector.online small{color:#6fbce8!important}
+
+/* Hover is a power-up preview, not a generic card hover. */
+#build .sector:hover{transform:translate(-50%,-55%) scale(1.055)!important;background:linear-gradient(145deg,rgba(12,53,87,.99),rgba(4,22,37,.99))!important;box-shadow:0 18px 40px rgba(0,0,0,.44),0 0 0 1px #65c7ff,0 0 32px rgba(42,157,231,.28)!important;color:#f2fbff!important}
+#build .sector:hover:before{border-left-color:#72d0ff;background:radial-gradient(circle at 50% 0,rgba(74,188,255,.23),transparent 60%),linear-gradient(135deg,rgba(15,62,95,.76),rgba(4,20,34,.96))}
+#build .sector:hover:after{background:linear-gradient(90deg,transparent,#a8e5ff,transparent);box-shadow:0 0 15px #47b9ff}
+#build .sector:hover>i{border-color:#8edbff!important;box-shadow:0 0 14px rgba(82,201,255,.55)!important}
+
+/* Hover detail becomes a clean technical tag attached to the module. */
+#build .node-detail{bottom:-39px!important;padding:8px 10px!important;border:1px solid rgba(73,166,223,.72)!important;border-radius:5px!important;background:linear-gradient(180deg,rgba(4,25,42,.98),rgba(2,15,27,.99))!important;color:#b8e4ff!important;font-size:6px!important;letter-spacing:.07em!important;box-shadow:0 12px 28px rgba(0,0,0,.6),0 0 18px rgba(40,145,214,.12)!important}
+#build .node-detail:before{content:"";position:absolute;left:50%;top:-5px;width:8px;height:8px;transform:translateX(-50%) rotate(45deg);background:#051b2d;border-left:1px solid rgba(73,166,223,.72);border-top:1px solid rgba(73,166,223,.72)}
+
+/* Threat state reads as system damage without changing the whole palette. */
+#build .sector.threat{box-shadow:0 15px 34px rgba(0,0,0,.4),0 0 0 1px #ff7963,0 0 34px rgba(255,78,45,.3)!important;animation:buildNodeThreat .55s ease-in-out infinite alternate!important}
+#build .sector.threat:after{background:linear-gradient(90deg,transparent,#ff9c83,transparent);box-shadow:0 0 14px rgba(255,91,63,.7)}
+#build .sector.threat>i:after{background:#ff8068;box-shadow:0 0 10px #ff5b42}
+
+/* Core-to-sector field energy: make the centre feel like it is actually powering the modules. */
+#build .core{filter:drop-shadow(0 0 calc(18px + var(--energy)*7px) rgba(32,147,235,.5))!important}
+#build .core:before{content:"";position:absolute;inset:-42px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 12%,rgba(86,194,255,.12) 15%,transparent 19% 42%,rgba(70,174,244,.1) 47%,transparent 52% 76%,rgba(106,209,255,.1) 80%,transparent 86%);filter:blur(4px);animation:buildCoreField 8s linear infinite;pointer-events:none}
+#build .core img{box-shadow:0 0 0 1px rgba(126,213,255,.55),0 0 32px rgba(63,179,255,.42),0 0 78px rgba(25,123,214,.3)!important}
+#build .core-sparks i{width:5px!important;height:5px!important;background:#d7f6ff!important;box-shadow:0 0 4px #fff,0 0 11px #66caff,0 0 22px #239cff!important}
+
+@keyframes buildRouteFlow{to{stroke-dashoffset:-7}}
+@keyframes buildRoutePulse{0%,100%{opacity:.66}50%{opacity:1}}
+@keyframes buildThreatPulse{to{opacity:.55;stroke-width:.5}}
+@keyframes buildNodeThreat{to{filter:brightness(1.15)}}
+@keyframes buildCoreField{to{transform:rotate(360deg)}}
+
+@media(max-width:620px){#build .actions button{min-height:62px!important}#build .process{min-height:56px!important}#build .event button{min-height:62px!important}#build .sector{width:94px!important;min-height:58px!important;padding:9px 7px!important}#build .sector b{font-size:7px!important}#build .node-detail{max-width:155px!important}}
