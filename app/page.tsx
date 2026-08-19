@@ -5,6 +5,7 @@ import { Footer, Header } from "../components/shell";
 import { SystemProgress } from "../components/system-progress";
 import { SystemExperience } from "../components/system-experience";
 import "./build-controls.css";
+import "./build-premium.css";
 
 export default function Home() {
   return <><Header /><SystemProgress /><SystemExperience /><main><Hero /><About /><div id="build"><EconomicPulse /></div><FAQ /></main><Footer /></>;
