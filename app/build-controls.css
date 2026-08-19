@@ -1,29 +1,26 @@
 /* Build-only control system. Intentionally scoped so the rest of the site is untouched. */
+/* The Build component contains its own <header>. Neutralize the site's global header rules here so it cannot become a second fixed navbar or cover the real top menu. */
+#build header{position:static!important;z-index:auto!important;top:auto!important;left:auto!important;width:auto!important;height:auto!important;padding:0!important;border:0!important;background:transparent!important;backdrop-filter:none!important;transition:none!important}
+#build header.scrolled{height:auto!important;background:transparent!important;border:0!important}
+#build header nav{display:flex!important;margin:0!important}
 #build button{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;cursor:pointer;transition:border-color .18s ease,background .18s ease,box-shadow .18s ease,color .18s ease,transform .18s ease!important}
 #build button:focus-visible{outline:2px solid rgba(93,190,255,.9)!important;outline-offset:3px!important}
 #build button:disabled{cursor:not-allowed!important;filter:saturate(.55)!important}
 
-/* Utility controls: deliberately quiet. */
 #build .top button{min-height:34px!important;padding:0 12px!important;border:1px solid rgba(78,135,177,.38)!important;border-radius:7px!important;background:rgba(4,18,32,.72)!important;color:#7699b5!important;letter-spacing:.07em!important;box-shadow:none!important}
 #build .top button:hover{border-color:rgba(91,181,241,.72)!important;background:#071d31!important;color:#bfe5ff!important}
-
-/* Setup: clear selected/unselected hierarchy. */
 #build .difficulty button{position:relative!important;min-height:76px!important;border-radius:8px!important;border-color:rgba(64,118,158,.38)!important;background:linear-gradient(180deg,rgba(7,25,42,.96),rgba(4,17,30,.96))!important}
 #build .difficulty button:hover{border-color:rgba(82,174,237,.68)!important;background:linear-gradient(180deg,#0a2945,#061c30)!important;transform:translateY(-1px)!important}
 #build .difficulty button.on{border-color:#58baff!important;background:linear-gradient(180deg,#0b3558,#08253f)!important;box-shadow:inset 3px 0 #58baff,0 8px 24px rgba(0,107,194,.14)!important}
-#build .launch{position:relative!important;min-height:50px!important;border-radius:7px!important;border-color:#65c2ff!important;background:linear-gradient(180deg,#168ee8,#0b65b8)!important;box-shadow:0 10px 30px rgba(7,110,202,.22),inset 0 1px rgba(255,255,255,.18)!important;font-weight:800!important;letter-spacing:.13em!important}
+#build .launch{position:relative!important;min-height:50px!important;border-radius:7px!important;border-color:#65c2ff!important;background:linear-gradient(180deg,#168ee8,#0b64b6)!important;box-shadow:0 10px 30px rgba(7,110,202,.22),inset 0 1px rgba(255,255,255,.18)!important;font-weight:800!important;letter-spacing:.13em!important}
 #build .launch:after{content:"  →";display:inline-block;margin-left:8px;transition:transform .18s ease}
 #build .launch:hover{filter:brightness(1.08);box-shadow:0 13px 34px rgba(7,122,221,.3),inset 0 1px rgba(255,255,255,.22)!important}
 #build .launch:hover:after{transform:translateX(3px)}
-
-/* Network nodes: compact control cards rather than generic buttons. */
 #build .sector{border-radius:7px!important;border-color:rgba(58,116,157,.5)!important;background:linear-gradient(180deg,rgba(5,24,42,.98),rgba(3,16,29,.98))!important;box-shadow:0 9px 22px rgba(0,0,0,.28)!important}
 #build .sector:hover{transform:translate(-50%,-52%)!important;border-color:#59baff!important;background:linear-gradient(180deg,#0a2b49,#061d33)!important;box-shadow:0 12px 30px rgba(0,0,0,.34),0 0 0 1px rgba(89,186,255,.08)!important}
 #build .sector.online{border-color:rgba(72,177,247,.72)!important;background:linear-gradient(180deg,#0a3152,#061d33)!important;box-shadow:inset 2px 0 #4db8ff,0 10px 28px rgba(0,0,0,.3)!important}
 #build .sector small{margin-top:6px!important;color:#6e9cbd!important;letter-spacing:.04em!important}
 #build .sector.online small{color:#83cfff!important}
-
-/* System control hierarchy. */
 #build aside>span:after{content:"  / CONTROL";color:#466a84}
 #build .actions{gap:8px!important;margin:14px 0 10px!important}
 #build .actions button{position:relative!important;min-height:58px!important;padding:10px 10px 21px!important;border-radius:7px!important;border:1px solid rgba(57,117,159,.5)!important;background:linear-gradient(180deg,#071d31,#051624)!important;color:#b6d7ee!important;text-align:left!important;font-weight:700!important;box-shadow:inset 0 1px rgba(255,255,255,.025)!important}
@@ -32,41 +29,28 @@
 #build .actions button b{float:right!important;color:#67c2ff!important;font-weight:700!important}
 #build .actions button:hover:not(:disabled){border-color:#4ca9e8!important;background:linear-gradient(180deg,#0a2944,#061b2f)!important;color:#e2f4ff!important}
 #build .actions button:disabled{opacity:.38!important}
-
-/* Primary action: unmistakable next step. */
 #build .process{position:relative!important;min-height:54px!important;padding:11px 44px 11px 14px!important;border-radius:7px!important;border:1px solid #66c4ff!important;background:linear-gradient(180deg,#168ee9 0%,#0c69bd 100%)!important;color:#fff!important;text-align:left!important;font-weight:800!important;letter-spacing:.105em!important;box-shadow:0 12px 30px rgba(5,109,199,.26),inset 0 1px rgba(255,255,255,.2)!important}
 #build .process:after{content:"→";position:absolute;right:16px;top:50%;transform:translateY(-52%);font-size:16px;transition:transform .18s ease}
 #build .process:hover:not(:disabled){filter:brightness(1.08);box-shadow:0 15px 36px rgba(5,121,218,.34),inset 0 1px rgba(255,255,255,.22)!important}
 #build .process:hover:not(:disabled):after{transform:translate(3px,-52%)}
 #build .process:disabled{opacity:.42!important;box-shadow:none!important}
-
-/* Contextual recommendation: informative, not louder than the main cycle action. */
 #build .context{min-height:38px!important;border-radius:7px!important;border-color:rgba(86,183,247,.72)!important;background:rgba(6,34,58,.94)!important;box-shadow:0 10px 28px rgba(0,0,0,.3)!important;color:#c6e9ff!important}
 #build .context:hover{background:#0a3151!important;border-color:#66c4ff!important}
-
-/* Exit is intentionally tertiary to prevent accidental clicks. */
 #build .exit{width:auto!important;display:block!important;margin:13px auto 0!important;padding:6px 9px!important;border:0!important;background:transparent!important;color:#49677e!important;font-size:7px!important;letter-spacing:.09em!important;box-shadow:none!important}
 #build .exit:before{content:"END RUN  ·  ";color:#5a768b}
 #build .exit:hover{color:#9cb9cf!important;background:transparent!important;text-decoration:underline;text-underline-offset:3px}
-
-/* Tech choices explain their actual trade-off. */
 #build .tech article button{position:relative!important;min-height:52px!important;padding:9px 10px 20px!important;border-radius:7px!important;border-color:rgba(59,117,158,.48)!important;background:linear-gradient(180deg,#071d31,#051624)!important;text-align:left!important;color:#b6d7ee!important}
 #build .tech article button:first-of-type:after{content:"INCREASE SECTOR OUTPUT";position:absolute;left:10px;bottom:6px;color:#547e9d;font-size:6px;letter-spacing:.06em}
 #build .tech article button:last-of-type:after{content:"REDUCE NETWORK RISK";position:absolute;left:10px;bottom:6px;color:#547e9d;font-size:6px;letter-spacing:.06em}
 #build .tech article button:hover:not(:disabled){border-color:#4daeea!important;background:#092944!important;color:#e1f3ff!important}
 #build .tech article button:disabled{opacity:.34!important}
-
-/* Event decisions: amber means a decision is required; effects stay visible. */
 #build .event{border-color:#d89455!important;box-shadow:0 24px 80px rgba(0,0,0,.72),0 0 38px rgba(216,128,58,.1)!important}
 #build .event>div:last-child{gap:9px!important}
 #build .event button{position:relative!important;min-height:58px!important;padding:10px 10px 22px!important;border-radius:7px!important;border-color:rgba(190,127,72,.52)!important;background:linear-gradient(180deg,#20170f,#121315)!important;color:#f1d4b7!important;text-align:left!important;font-weight:700!important}
 #build .event button:first-child:after{content:"ACTIVE RESPONSE  ·  HIGHER IMPACT";position:absolute;left:10px;bottom:7px;color:#a77a54;font-size:6px;letter-spacing:.05em}
 #build .event button:last-child:after{content:"DEFENSIVE RESPONSE  ·  LOWER RISK";position:absolute;left:10px;bottom:7px;color:#8b795f;font-size:6px;letter-spacing:.05em}
 #build .event button:hover{border-color:#e9a567!important;background:linear-gradient(180deg,#2a1d12,#171618)!important;color:#fff1df!important}
-
-/* Result action is clean and consistent. */
 #build .result button{min-height:40px!important;border-radius:7px!important;border-color:#469dd8!important;background:linear-gradient(180deg,#0b3556,#08263f)!important;color:#ccecff!important;font-weight:700!important}
 #build .result button:after{content:"  →";display:inline-block;margin-left:6px;transition:transform .18s ease}
 #build .result button:hover:after{transform:translateX(3px)}
-
 @media(max-width:620px){#build .actions button{min-height:62px!important}#build .process{min-height:56px!important}#build .event button{min-height:62px!important}}
